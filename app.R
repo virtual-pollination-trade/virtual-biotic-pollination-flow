@@ -224,9 +224,11 @@ server <- function(input, output) {
           country_features_with_sf_geometry %>%
           ggplot() +
           geom_sf(aes(fill = hdi)) +
-          scale_fill_gradient(
-            low = "yellow",
-            high = "dark orange",
+          # TODO: change to scale_fill_manual and add custom breaks
+          scale_fill_gradient2(
+            low = "#DCD627",
+            mid = "#E0FF00",
+            high = "#FF7C00",
             limits = c(0, 1)
             ) +
           labs(fill = "HDI") +
