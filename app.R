@@ -219,19 +219,18 @@ server <- function(input, output) {
       }
 
       if (input$colormap == "HDI") {
-
+        
+        hdi_fill_colors <- c("#F3FF00", "#EBF607", "#DFE90D", "#D4DE14", "orange")
+        
         base_world_map <-
           country_features_with_sf_geometry %>%
           ggplot() +
           geom_sf(aes(fill = hdi)) +
-          # TODO: change to scale_fill_manual and add custom breaks
-          scale_fill_gradient2(
-            low = "#DCD627",
-            mid = "#E0FF00",
-            high = "#FF7C00",
+          scale_fill_gradientn(
+            colours = hdi_fill_colors,
             limits = c(0, 1)
             ) +
-          labs(fill = "HDI") +
+          labs(fill = "HDI\n") +
           ylim(c(-100, 100))
 
       }
@@ -271,7 +270,7 @@ server <- function(input, output) {
             label = comma_format(),
             guide = FALSE
             ) +
-          labs(colour = "Virtual Biotic Pollination Flow (tons)")
+          labs(colour = "Virtual Biotic\nPollination Flow (tons)")
 
         print(virtual_pollinators_plot)
 
