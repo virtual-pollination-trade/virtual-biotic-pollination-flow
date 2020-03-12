@@ -220,7 +220,7 @@ server <- function(input, output) {
 
       if (input$colormap == "HDI") {
         
-        hdi_fill_colors <- c("#F3FF00", "#EBF607", "#DFE90D", "#D4DE14", "orange")
+        hdi_fill_colors <- c("yellow", "orange")
         
         base_world_map <-
           country_features_with_sf_geometry %>%
