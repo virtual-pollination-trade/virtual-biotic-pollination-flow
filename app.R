@@ -232,23 +232,7 @@ server <- function(input, output) {
         
       } else {
 
-        plot(
-          x = 1:10,
-          type = "n",
-          xaxt = "n",
-          yaxt = "n",
-          ann = FALSE,
-          frame.plot = FALSE
-        )
-
-        text(
-          x = 5.5,
-          y = 5.5,
-          labels = paste(
-            input$origin, "don't share virtual flux with", input$destination
-          ),
-          cex = 2.5
-        )
+        no_vp_flow(input$origin, input$destination)
 
       }
 

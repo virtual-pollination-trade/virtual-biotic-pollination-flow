@@ -188,3 +188,25 @@ vp_flow_arrows_plot <- function(virtual_pollinators_flow_filtered, base_world_ma
   print(virtual_pollinators_plot)
   
 }
+
+no_vp_flow <- function(origin, destination) {
+  
+  plot(
+    x = 1:10,
+    type = "n",
+    xaxt = "n",
+    yaxt = "n",
+    ann = FALSE,
+    frame.plot = FALSE
+  )
+  
+  text(
+    x = 5.5,
+    y = 5.5,
+    labels = paste(
+      origin, "don't share virtual flux with", destination
+    ),
+    cex = 2.5
+  )
+  
+}
