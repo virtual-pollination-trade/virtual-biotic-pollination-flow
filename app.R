@@ -224,59 +224,12 @@ server <- function(input, output) {
 
       if (nrow(virtual_pollinators_flow_filtered) != 0) {
 
-        virtual_pollinators_plot <-
-          base_world_map +
-          geom_curve(
-            data = virtual_pollinators_flow_filtered,
-            aes(
-              x = reporter_long,
-              y = reporter_lat,
-              xend = partner_long,
-              yend = partner_lat,
-              colour = vp_flow,
-              alpha = vp_flow
-            ),
-            angle = 90,
-            # alpha = 0.6,
-            size = 1,
-            arrow = arrow(length = unit(0.2, "cm")),
-            lineend = "butt",
-            # colour = "dark blue",
-            inherit.aes = TRUE
-          ) +
-          geom_point(
-            data = virtual_pollinators_flow_filtered,
-            aes(x = reporter_long, y = reporter_lat),
-            col = "black"
-          ) +
-          # scale_color_distiller(palette = "Spectral", label = comma_format()) +
-          scale_color_gradient(
-            n.breaks = 10,
-            low = "light blue",
-            high = "dark blue",
-            label = comma_format(),
-            limits = c(vp_flow_year$vp_flow_min, vp_flow_year$vp_flow_max)
-          ) +
-          scale_alpha(
-            n.breaks = 10,
-            range = c(0.1, 1),
-            label = comma_format(accuracy = 10),
-            limits = c(vp_flow_year$vp_flow_min, vp_flow_year$vp_flow_max)
-            ) +
-          guides(
-            alpha = guide_legend(
-              reverse = TRUE, 
-              override.aes = list(
-                size = 2, 
-                shape = 22, 
-                fill = "blue"
-              )
-            )
-          ) +
-          labs(colour = "Virtual Biotic\nPollination Flow (tons)")
-
-        print(virtual_pollinators_plot)
-
+        vp_flow_arrows_plot(
+          virtual_pollinators_flow_filtered, 
+          base_world_map, 
+          vp_flow_year
+        )
+        
       } else {
 
         plot(
