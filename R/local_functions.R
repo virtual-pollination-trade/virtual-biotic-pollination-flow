@@ -20,6 +20,13 @@ read_vp_flow_data <- function() {
   
 }
 
+read_sf_data <- function() {
+  
+  here::here("data", "country-features-with-sf-geometry.qs") %>%
+    qread()
+  
+}
+
 distinct_countries <- function(df) {
 
   df %>%

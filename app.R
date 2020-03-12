@@ -16,8 +16,7 @@ virtual_pollinators_flow <-
   read_vp_flow_data()
 
 country_features_with_sf_geometry <-
-  here::here("data", "country-features-with-sf-geometry.qs") %>%
-  qread()
+  read_sf_data()
 
 ui <- fluidPage(
 
