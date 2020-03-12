@@ -228,7 +228,7 @@ server <- function(input, output) {
           geom_sf(aes(fill = hdi)) +
           scale_fill_gradientn(
             colours = hdi_fill_colors,
-            limits = c(0, 1)
+            # limits = c(0, 1)
             ) +
           labs(fill = "HDI\n") +
           ylim(c(-100, 100))
