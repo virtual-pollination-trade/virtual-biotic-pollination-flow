@@ -98,3 +98,36 @@ min_max_vp_flow_all_years <- function(df) {
     )
 
 }
+
+
+plot_sf_map <- function(country_features_with_sf_geometry, filled_by) {
+  
+  if (filled_by == "None") {
+    
+    map <- 
+      country_features_with_sf_geometry %>%
+      ggplot() +
+      geom_sf() +
+      ylim(c(-100, 100))
+    
+  }
+  
+  if (filled_by == "HDI") {
+    
+    hdi_fill_colors <- c("yellow", "orange")
+    
+    map <- 
+      country_features_with_sf_geometry %>%
+      ggplot() +
+      geom_sf(aes(fill = hdi)) +
+      scale_fill_gradientn(
+        colours = hdi_fill_colors,
+        # limits = c(0, 1)
+      ) +
+      labs(fill = "HDI\n") +
+      ylim(c(-100, 100))
+  }
+  
+  return(map)
+  
+}

@@ -211,27 +211,14 @@ server <- function(input, output) {
       if (input$colormap == "None") {
 
         base_world_map <-
-          country_features_with_sf_geometry %>%
-          ggplot() +
-          geom_sf() +
-          ylim(c(-100, 100))
+          plot_sf_map(country_features_with_sf_geometry, filled_by = "None")
 
       }
 
       if (input$colormap == "HDI") {
         
-        hdi_fill_colors <- c("yellow", "orange")
-        
         base_world_map <-
-          country_features_with_sf_geometry %>%
-          ggplot() +
-          geom_sf(aes(fill = hdi)) +
-          scale_fill_gradientn(
-            colours = hdi_fill_colors,
-            # limits = c(0, 1)
-            ) +
-          labs(fill = "HDI\n") +
-          ylim(c(-100, 100))
+          plot_sf_map(country_features_with_sf_geometry, filled_by = "HDI")
 
       }
 
