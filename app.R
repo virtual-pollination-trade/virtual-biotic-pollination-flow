@@ -10,14 +10,10 @@ suppressPackageStartupMessages({
   library(scales)
 })
 
-
 source(here("R", "local_functions.R"))
 
 virtual_pollinators_flow <-
-  here::here("data", "virtual-pollinators-flow.qs") %>%
-  qread() %>%
-  filter(item_code != 0) %>%
-  .[.$reporter_countries != .$partner_countries, ]
+  read_vp_flow_data()
 
 country_features_with_sf_geometry <-
   here::here("data", "country-features-with-sf-geometry.qs") %>%

@@ -11,6 +11,15 @@ suppressWarnings({
   )
 })
 
+read_vp_flow_data <- function() {
+  
+  here::here("data", "virtual-pollinators-flow.qs") %>%
+    qread() %>%
+    filter(item_code != 0) %>%
+    .[.$reporter_countries != .$partner_countries, ]
+  
+}
+
 distinct_countries <- function(df) {
 
   df %>%
