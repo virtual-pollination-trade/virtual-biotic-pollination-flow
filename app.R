@@ -1,24 +1,12 @@
-suppressPackageStartupMessages({
-  library(shiny)
-  library(tidyverse)
-  library(fs)
-  library(here)
-  library(usethis)
-  library(qs)
-  library(glue)
-  library(sf)
-  library(scales)
-})
+source("./global.R", local = TRUE)
 
-source(here("R", "local_functions.R"))
+ui <- fluidPage(
 
   # path to google analytics
   tags$head(includeHTML(("www/google-analytics.html"))),
 
   # path css file
   theme = "style.css",
-
-ui <- fluidPage(
 
   # Application title
   titlePanel("Virtual Biotic Pollination Flow"),
@@ -32,12 +20,7 @@ ui <- fluidPage(
       selectInput(
         inputId = "origin",
         label = "Exporting country",
-        choices = virtual_pollinators_flow %>%
-                  select(reporter_countries) %>%
-                  distinct() %>%
-                  pull() %>%
-                  c("All countries", .) %>% 
-                  sort(),
+        choices = origin_select_input,
         multiple = TRUE,
         selected = "United States of America",
         selectize = TRUE
@@ -46,12 +29,7 @@ ui <- fluidPage(
       selectInput(
         inputId = "destination",
         label = "Import country",
-        choices = virtual_pollinators_flow %>%
-                  select(partner_countries) %>%
-                  distinct() %>%
-                  pull() %>%
-                  c("All countries", .) %>% 
-                  sort(),
+        choices = destination_select_input,
         multiple = TRUE,
         selected = "All countries",
         selectize = TRUE
@@ -60,12 +38,7 @@ ui <- fluidPage(
       selectInput(
         inputId = "year",
         label = "Year",
-        choices = virtual_pollinators_flow %>%
-                  select(year) %>%
-                  arrange(year) %>%
-                  distinct() %>%
-                  pull() %>%
-                  c("All years", .),
+        choices = year_select_input,
         selected = "All years",
         selectize = TRUE
       ),
@@ -73,7 +46,7 @@ ui <- fluidPage(
       selectInput(
         inputId = "colormap",
         label = "Socioeconomic aspect",
-        choices = c("None", "HDI"),
+        choices = colormap_select_input,
         selected = "None",
         selectize = TRUE
       ),
@@ -85,12 +58,13 @@ ui <- fluidPage(
     # Show a plot of the generated distribution
     mainPanel(
 
-      plotOutput(outputId = "map", height = "700px"),
+      plotOutput(outputId = "map", height = "700px", width = "100%"),
 
       verbatimTextOutput(outputId = "report")
 
     )
-  )
+  ),
+  # tags$p("Silva *et al.*, 2019...")
 )
 
 server <- function(input, output) {
