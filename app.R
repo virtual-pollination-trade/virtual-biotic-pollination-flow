@@ -145,8 +145,7 @@ server <- function(input, output) {
 
   # output$report <-
   #   renderText({
-  #     vp_flow_year <- filter_year_by_select_year(virtual_pollinators_flow, input$year)
-  #     vp_flow_year
+  #     
   #   })
 
 }
