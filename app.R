@@ -15,8 +15,8 @@ source(here("R", "local_functions.R"))
 virtual_pollinators_flow <-
   read_vp_flow_data()
 
-country_features_with_sf_geometry <-
-  read_sf_data()
+  # path css file
+  theme = "style.css",
 
 ui <- fluidPage(
 

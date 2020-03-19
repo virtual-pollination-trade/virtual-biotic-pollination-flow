@@ -1,6 +1,9 @@
 suppressWarnings({
   theme_set(
-    theme_void(base_family = 20) +
+    theme_void(
+      base_size = 14,
+      base_family = "Arial"
+    ) +
       theme(
         legend.position = "bottom",
         legend.direction = "vertical",
