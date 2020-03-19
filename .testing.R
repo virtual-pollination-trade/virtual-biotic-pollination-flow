@@ -1,28 +1,71 @@
-library(shiny)
-library(tidyverse)
-library(fs)
-library(here)
-library(usethis)
-library(qs)
-library(glue)
-library(sf)
-library(scales)
+source("./global.R", local = TRUE)
 
-source(here("R", "local_functions.R"))
+input <- list()
+input$origin <- "Brazil"
+input$destination <- "China"
+input$year <- 2001
+input$colormap <- "HDI"
 
-virtual_pollinators_flow <-
-  read_vp_flow_data() %>% 
-  filter(reporter_countries == "Brazil", partner_countries == "China")
+############################################################
+#                                                          #
+#                    same app structure                    #
+#                                                          #
+############################################################
 
-country_features_with_sf_geometry <-
-  read_sf_data()
+message("Checking input variables ...\n\n")
 
-vp_flow_year <-
-  virtual_pollinators_flow %>%
-  summarise_vp_flow_all_years() %>%
-  min_max_vp_flow_all_years()
+print(input$origin)
+print(input$destination)
+print(input$year)
+print(input$colormap)
 
-base_world_map <-
-  plot_sf_map(country_features_with_sf_geometry, filled_by = "HDI")
+message("\n\nFiltering countries in virtual_pollinators_flow...\n\n")
 
-vp_flow_arrows_plot(virtual_pollinators_flow, base_world_map, vp_flow_year)
+virtual_pollinators_flow_filtered <-
+  virtual_pollinators_flow %>% 
+  filter_countries_by_input_select_countries(
+    input_origin = input$origin, 
+    input_destination = input$destination
+  ) %>%
+  filter_countries_by_input_select_year(input_year = input$year)
+
+message("Checking lowest `vp_flow` values ...\n\n")
+
+virtual_pollinators_flow_filtered %>%
+  select(reporter_countries, partner_countries, vp_flow) %>% 
+  head() %>% 
+  print()
+
+message("\n\nChecking highest `vp_flow` values ...\n\n")
+
+virtual_pollinators_flow_filtered %>%
+  select(reporter_countries, partner_countries, vp_flow) %>% 
+  tail() %>% 
+  print()
+
+message("\n\nFiltering years ...\n\n")
+
+vp_flow_year <- 
+  virtual_pollinators_flow %>% 
+  filter_year_by_input_select_year(input$year)
+
+message("Checking filtered year(s) ...\n\n")
+
+vp_flow_year %>% 
+  print()
+
+cat("\n\n")
+ui_todo("Creating map ...\n\n")
+
+make_plot_by_input_colormap(
+  data_clean = virtual_pollinators_flow_filtered,
+  data_sf = country_features_with_sf_geometry,
+  data_year = vp_flow_year,
+  input_colormap = input$colormap,
+  input_origin = input$origin,
+  input_destination = input$destination 
+)
+    
+cat("\n")
+ui_done("Map done!\n\n")
+
