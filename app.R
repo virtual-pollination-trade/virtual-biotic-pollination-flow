@@ -68,152 +68,85 @@ ui <- fluidPage(
 )
 
 server <- function(input, output) {
-
+  
+  message("\n\nLoading server ...\n\n")
+  
   output$map <- renderPlot({
 
     input$make_plot
 
     req(input$origin)
     req(input$destination)
+    
+    message("Checking input variables ...\n\n")
+    
+    print(input$origin)
+    print(input$destination)
+    print(input$year)
+    print(input$colormap)
 
     withProgress(
 
-      message = "Creating map...", {
+      message = "Creating map ...", {
+      
+      message("\n\nFiltering countries in virtual_pollinators_flow...\n\n")
 
-      countries_field_empty <-
-        !(length(input$origin) == 1L &&
-          nzchar(input$origin)) &&
-        !(length(input$destination) == 1L &&
-          nzchar(input$destination))
+      virtual_pollinators_flow_filtered <-
+        virtual_pollinators_flow %>% 
+        filter_countries_by_input_select_countries(
+          input_origin = input$origin, 
+          input_destination = input$destination
+        ) %>%
+        filter_countries_by_input_select_year(input_year = input$year)
+      
+      message("Checking lowest `vp_flow` values ...\n\n")
+      
+      virtual_pollinators_flow_filtered %>%
+        select(reporter_countries, partner_countries, vp_flow) %>% 
+        head() %>% 
+        print()
+      
+      message("\n\nChecking highest `vp_flow` values ...\n\n")
+      
+      virtual_pollinators_flow_filtered %>%
+        select(reporter_countries, partner_countries, vp_flow) %>% 
+        tail() %>% 
+        print()
+      
+      message("\n\nFiltering years ...\n\n")
+      
+      vp_flow_year <- 
+        virtual_pollinators_flow %>% 
+        filter_year_by_input_select_year(input$year)
 
-      all_countries <-
-        input$origin == "All countries" &&
-          input$destination == "All countries"
+      message("Checking filtered year(s) ...\n\n")
+      
+      vp_flow_year %>% 
+        print()
 
-      all_countries_reporter <-
-        input$origin == "All countries" &&
-          input$destination != "All countries"
+      cat("\n\n")
+      ui_todo("Creating map ...\n\n")
 
-      all_countries_partner <-
-        input$origin != "All countries" &&
-          input$destination == "All countries"
-
-      countries_field_filled <-
-        input$origin != "All countries" &&
-          input$destination != "All countries"
-
-      if (countries_field_empty) {
-
-        virtual_pollinators_flow_filtered <-
-          virtual_pollinators_flow %>%
-          distinct_countries()
-
-      }
-
-      if (all_countries) {
-
-        virtual_pollinators_flow_filtered <-
-          virtual_pollinators_flow %>%
-          distinct_countries()
-
-      }
-
-      if (all_countries_reporter) {
-
-        virtual_pollinators_flow_filtered <-
-          virtual_pollinators_flow %>%
-          filter(
-            partner_countries %in% input$destination
-          ) %>%
-          distinct_countries()
-
-      }
-
-      if (all_countries_partner) {
-
-        virtual_pollinators_flow_filtered <-
-          virtual_pollinators_flow %>%
-          filter(
-            reporter_countries %in% input$origin
-          ) %>%
-          distinct_countries()
-
-      }
-
-      if (countries_field_filled) {
-
-        virtual_pollinators_flow_filtered <-
-          virtual_pollinators_flow %>%
-          filter(
-            reporter_countries %in% input$origin,
-            partner_countries %in% input$destination
-          ) %>%
-          distinct_countries()
-
-      }
-
-      if (input$year == "All years") {
-
-        virtual_pollinators_flow_filtered <-
-          virtual_pollinators_flow_filtered %>%
-          summarise_vp_flow_all_years()
-
-        vp_flow_year <-
-          virtual_pollinators_flow %>%
-          summarise_vp_flow_all_years() %>%
-          min_max_vp_flow_all_years()
-
-      } else {
-
-        virtual_pollinators_flow_filtered <-
-          virtual_pollinators_flow_filtered %>%
-          filter(year == input$year)
-
-        vp_flow_year <-
-          virtual_pollinators_flow %>%
-          min_max_vp_flow_by_input_year(year = input$year)
-
-      }
-
-      usethis::ui_todo("Creating map...")
-
-      if (input$colormap == "None") {
-
-        base_world_map <-
-          plot_sf_map(country_features_with_sf_geometry, filled_by = "None")
-
-      }
-
-      if (input$colormap == "HDI") {
-        
-        base_world_map <-
-          plot_sf_map(country_features_with_sf_geometry, filled_by = "HDI")
-
-      }
-
-      if (nrow(virtual_pollinators_flow_filtered) != 0) {
-
-        vp_flow_arrows_plot(
-          virtual_pollinators_flow_filtered, 
-          base_world_map, 
-          vp_flow_year
-        )
-        
-      } else {
-
-        no_vp_flow(input$origin, input$destination)
-
-      }
+      make_plot_by_input_colormap(
+        data_clean = virtual_pollinators_flow_filtered,
+        data_sf = country_features_with_sf_geometry,
+        data_year = vp_flow_year,
+        input_colormap = input$colormap,
+        input_origin = input$origin,
+        input_destination = input$destination 
+      )
 
     })
-
-    usethis::ui_done("Map done!")
+    
+    cat("\n")
+    ui_done("Map done!\n\n")
 
   })
 
   # output$report <-
   #   renderText({
-  #
+  #     vp_flow_year <- filter_year_by_select_year(virtual_pollinators_flow, input$year)
+  #     vp_flow_year
   #   })
 
 }
