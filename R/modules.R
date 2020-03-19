@@ -1,5 +1,15 @@
 message("\t\tLoadind modules ...\n")
 
+#' Title
+#'
+#' @param data_raw 
+#' @param input_origin 
+#' @param input_destination 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 filter_countries_by_input_select_countries <- function(data_raw, input_origin, input_destination) {
   
   origin <- input_origin
@@ -82,6 +92,15 @@ filter_countries_by_input_select_countries <- function(data_raw, input_origin, i
 }
 
 
+#' Title
+#'
+#' @param data_filtered_by_countries 
+#' @param input_year 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 filter_countries_by_input_select_year <- function(data_filtered_by_countries, input_year) {
   
   if (input_year == "All years") {
@@ -103,6 +122,15 @@ filter_countries_by_input_select_year <- function(data_filtered_by_countries, in
 }
 
 
+#' Title
+#'
+#' @param data_raw 
+#' @param input_year 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 filter_year_by_input_select_year <- function(data_raw, input_year) {
   
   if (input_year == "All years") {
@@ -125,6 +153,19 @@ filter_year_by_input_select_year <- function(data_raw, input_year) {
 }
 
 
+#' Title
+#'
+#' @param data_clean 
+#' @param data_sf 
+#' @param data_year 
+#' @param input_colormap 
+#' @param input_origin 
+#' @param input_destination 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 make_plot_by_input_colormap <- 
   function(
     data_clean, 

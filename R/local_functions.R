@@ -17,6 +17,12 @@ suppressWarnings({
   
 })
 
+#' Title
+#'
+#' @return
+#' @export
+#'
+#' @examples
 read_vp_flow_data <- function() {
   
   here::here("data", "virtual-pollinators-flow.qs") %>%
@@ -26,6 +32,12 @@ read_vp_flow_data <- function() {
   
 }
 
+#' Title
+#'
+#' @return
+#' @export
+#'
+#' @examples
 read_sf_data <- function() {
   
   here::here("data", "country-features-with-sf-geometry.qs") %>%
@@ -33,9 +45,17 @@ read_sf_data <- function() {
   
 }
 
-distinct_countries <- function(df) {
+#' Title
+#'
+#' @param data 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+distinct_countries <- function(data) {
 
-  df %>%
+  data %>%
     group_by(
       reporter_countries,
       partner_countries,
@@ -56,9 +76,17 @@ distinct_countries <- function(df) {
 
 }
 
-summarise_vp_flow_all_years <- function(df) {
+#' Title
+#'
+#' @param data 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+summarise_vp_flow_all_years <- function(data) {
 
-  df %>%
+  data %>%
     group_by(
       reporter_countries,
       partner_countries,
@@ -78,12 +106,21 @@ summarise_vp_flow_all_years <- function(df) {
 
 }
 
-min_max_vp_flow_by_input_year <- function(df, year) {
+#' Title
+#'
+#' @param data 
+#' @param year 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+min_max_vp_flow_by_input_year <- function(data, year) {
   
   if (year == "All years") {
     
     min_max_vp_flow <- 
-      df %>%
+      data %>%
       filter(vp_flow > 0) %>%
       summarise(
         vp_flow_min = min(vp_flow),
@@ -93,7 +130,7 @@ min_max_vp_flow_by_input_year <- function(df, year) {
   } else {
     
     min_max_vp_flow <-
-      df %>%
+      data %>%
       distinct_countries() %>%
       group_by(year) %>%
       summarise(
@@ -110,6 +147,15 @@ min_max_vp_flow_by_input_year <- function(df, year) {
 }
 
 
+#' Title
+#'
+#' @param data_sf 
+#' @param filled_by 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 plot_sf_map <- function(data_sf, filled_by) {
   
   if (filled_by == "None") {
@@ -142,6 +188,16 @@ plot_sf_map <- function(data_sf, filled_by) {
   
 }
 
+#' Title
+#'
+#' @param virtual_pollinators_flow_filtered 
+#' @param base_world_map 
+#' @param vp_flow_year 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 vp_flow_arrows_plot <- function(virtual_pollinators_flow_filtered, base_world_map, vp_flow_year) {
   
   virtual_pollinators_plot <-
@@ -199,6 +255,15 @@ vp_flow_arrows_plot <- function(virtual_pollinators_flow_filtered, base_world_ma
   
 }
 
+#' Title
+#'
+#' @param origin 
+#' @param destination 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 no_vp_flow <- function(origin, destination) {
   
   plot(
@@ -221,6 +286,15 @@ no_vp_flow <- function(origin, destination) {
   
 }
 
+#' Title
+#'
+#' @param data 
+#' @param countries_type 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 distinct_input_select_countries <- function(data, countries_type) {
   
   data %>%
@@ -231,6 +305,15 @@ distinct_input_select_countries <- function(data, countries_type) {
     }
   
 }
+
+#' Title
+#'
+#' @param data 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 distinct_input_select_years <- function(data) {
   
   data %>%
