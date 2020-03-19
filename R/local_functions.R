@@ -220,3 +220,25 @@ no_vp_flow <- function(origin, destination) {
   )
   
 }
+
+distinct_input_select_countries <- function(data, countries_type) {
+  
+  data %>%
+    select({{ countries_type }}) %>%
+    distinct() %>%
+    pull() %>% {
+      c("All countries", sort(.))
+    }
+  
+}
+distinct_input_select_years <- function(data) {
+  
+  data %>%
+    select(year) %>%
+    arrange(year) %>%
+    distinct() %>%
+    pull() %>% {
+      c("All years", .)
+    }
+  
+}

@@ -26,29 +26,17 @@ country_features_with_sf_geometry <-
   read_sf_data()
 
 message("\tLoading variables for input panel ...\n")
-origin_select_input <- 
+origin_select_input <-
   virtual_pollinators_flow %>%
-  select(reporter_countries) %>%
-  distinct() %>%
-  pull() %>%
-  c("All countries", .) %>% 
-  sort()
+  distinct_input_select_countries(countries_type = reporter_countries)
 
 destination_select_input <- 
   virtual_pollinators_flow %>%
-  select(partner_countries) %>%
-  distinct() %>%
-  pull() %>%
-  c("All countries", .) %>% 
-  sort()
-
+  distinct_input_select_countries(countries_type = partner_countries)
+  
 year_select_input <- 
   virtual_pollinators_flow %>%
-  select(year) %>%
-  arrange(year) %>%
-  distinct() %>%
-  pull() %>%
-  c("All years", .)
-
+  distinct_input_select_years()
+  
 colormap_select_input <- 
   c("None", "HDI")
