@@ -1,4 +1,5 @@
 suppressWarnings({
+  
   theme_set(
     theme_void(
       base_size = 14,
@@ -12,6 +13,7 @@ suppressWarnings({
         legend.text = element_text(size = 20)
       )
   )
+  
 })
 
 read_vp_flow_data <- function() {
@@ -48,7 +50,8 @@ distinct_countries <- function(df) {
       vp_flow = sum(vp_flow),
     ) %>%
     filter(vp_flow > 0) %>%
-    arrange(vp_flow)
+    arrange(vp_flow) %>% 
+    ungroup()
 
 }
 
@@ -74,57 +77,44 @@ summarise_vp_flow_all_years <- function(df) {
 
 }
 
-summarise_vpflow_and_join <- function(df) {
-
-  vp_flow_total <-
-    df %>%
-    group_by(reporter_countries, partner_countries) %>%
-    summarise(vp_flow_total = sum(vp_flow)) %>%
-    ungroup()
-
-  summarised_and_joined <-
-    full_join(
-      x = df,
-      y = vp_flow_total,
-      by = c("reporter_countries", "partner_countries")
-    ) %>%
-    arrange(vp_flow_total)
-
-  return(summarised_and_joined)
-
-}
-
 min_max_vp_flow_by_input_year <- function(df, year) {
-
-  df %>%
-    distinct_countries() %>%
-    group_by(year) %>%
-    summarise(
-      vp_flow_min = min(vp_flow),
-      vp_flow_max = max(vp_flow)
-    ) %>%
-    filter(year %in% {{ year }})
+  
+  if (year == "All years") {
+    
+    min_max_vp_flow <- 
+      df %>%
+      filter(vp_flow > 0) %>%
+      summarise(
+        vp_flow_min = min(vp_flow),
+        vp_flow_max = max(vp_flow)
+      )
+    
+  } else {
+    
+    min_max_vp_flow <-
+      df %>%
+      distinct_countries() %>%
+      group_by(year) %>%
+      summarise(
+        vp_flow_min = min(vp_flow),
+        vp_flow_max = max(vp_flow)
+      ) %>%
+      filter(year %in% {{ year }}) %>% 
+      ungroup()
+    
+  }
+  
+  return(min_max_vp_flow)
 
 }
 
-min_max_vp_flow_all_years <- function(df) {
 
-  df %>%
-    filter(vp_flow > 0) %>%
-    summarise(
-      vp_flow_min = min(vp_flow),
-      vp_flow_max = max(vp_flow)
-    )
-
-}
-
-
-plot_sf_map <- function(country_features_with_sf_geometry, filled_by) {
+plot_sf_map <- function(data_sf, filled_by) {
   
   if (filled_by == "None") {
     
     map <- 
-      country_features_with_sf_geometry %>%
+      data_sf %>%
       ggplot() +
       geom_sf() +
       ylim(c(-100, 100))
@@ -136,7 +126,7 @@ plot_sf_map <- function(country_features_with_sf_geometry, filled_by) {
     hdi_fill_colors <- c("yellow", "orange")
     
     map <- 
-      country_features_with_sf_geometry %>%
+      data_sf %>%
       ggplot() +
       geom_sf(aes(fill = hdi)) +
       scale_fill_gradientn(
