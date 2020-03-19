@@ -1,3 +1,4 @@
+message("\t\tLoading functions ...\n")
 suppressWarnings({
   
   theme_set(
