@@ -12,8 +12,8 @@ suppressPackageStartupMessages({
 
 source(here("R", "local_functions.R"))
 
-virtual_pollinators_flow <-
-  read_vp_flow_data()
+  # path to google analytics
+  tags$head(includeHTML(("www/google-analytics.html"))),
 
   # path css file
   theme = "style.css",
