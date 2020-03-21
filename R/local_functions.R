@@ -1,21 +1,4 @@
 message("\t\tLoading functions ...\n")
-suppressWarnings({
-  
-  theme_set(
-    theme_void(
-      base_size = 14,
-      base_family = "Arial"
-    ) +
-      theme(
-        legend.position = "bottom",
-        legend.direction = "vertical",
-        legend.justification = "center",
-        legend.title = element_text(size = 20),
-        legend.text = element_text(size = 20)
-      )
-  )
-  
-})
 
 #' Title
 #'
@@ -248,6 +231,17 @@ vp_flow_arrows_plot <- function(virtual_pollinators_flow_filtered, base_world_ma
           fill = "blue"
         )
       )
+    ) +
+    theme_void(
+      base_size = 14,
+      base_family = "Arial"
+    ) +
+    theme(
+      legend.position = "bottom",
+      legend.direction = "vertical",
+      legend.justification = "center",
+      legend.title = element_text(size = 20),
+      legend.text = element_text(size = 20)
     ) +
     labs(colour = "Virtual Biotic\nPollination Flow (tons)")
   
