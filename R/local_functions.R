@@ -224,7 +224,7 @@ vp_flow_arrows_plot <- function(virtual_pollinators_flow_filtered, base_world_ma
       size = 1,
       arrow = arrow(length = unit(0.2, "cm")),
       lineend = "butt",
-      # colour = "dark blue",
+      colour = "dark blue",
       inherit.aes = TRUE
     ) +
     geom_point(
@@ -233,13 +233,13 @@ vp_flow_arrows_plot <- function(virtual_pollinators_flow_filtered, base_world_ma
       col = "black"
     ) +
     # scale_color_distiller(palette = "Spectral", label = comma_format()) +
-    scale_color_gradient(
-      n.breaks = 10,
-      low = "light blue",
-      high = "dark blue",
-      label = comma_format(),
-      limits = c(vp_flow_year$vp_flow_min, vp_flow_year$vp_flow_max)
-    ) +
+    # scale_color_gradient(
+    #   n.breaks = 10,
+    #   low = "light blue",
+    #   high = "dark blue",
+    #   label = comma_format(),
+    #   limits = c(vp_flow_year$vp_flow_min, vp_flow_year$vp_flow_max)
+    # ) +
     scale_alpha(
       n.breaks = 10,
       range = c(0.1, 1),
@@ -275,16 +275,13 @@ vp_flow_arrows_plot <- function(virtual_pollinators_flow_filtered, base_world_ma
 
 #' Informs when countries doesn't have relationships
 #'
-#' @param origin selected "Exporting countries"
-#' @param destination select "Import countries"
-#' 
 #' @import graphics
 #'
 #' @return a plot
 #' 
 #' @export
 #'
-no_vp_flow <- function(origin, destination) {
+no_vp_flow <- function() {
   
   plot(
     x = 1:10,
@@ -297,9 +294,9 @@ no_vp_flow <- function(origin, destination) {
   
   text(
     x = 5.5,
-    y = 5.5,
+    y = 7.5,
     labels = paste(
-      origin, "don't share virtual flux with", destination
+      "These countries do not share virtual biotic pollination flow."
     ),
     cex = 2.5
   )
