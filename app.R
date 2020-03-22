@@ -70,6 +70,11 @@ ui <- fluidPage(
 server <- function(input, output) {
   
   message("\n\nLoading server ...\n\n")
+
+  # TODO: Create reactive objects 
+  # BODY: The filtered data need to be reactive objects to be used into differents
+  #       parts of output.
+  #       see: https://stackoverflow.com/a/19466838
   
   output$map <- renderPlot({
 
