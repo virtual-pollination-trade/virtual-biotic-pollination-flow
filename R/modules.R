@@ -195,8 +195,9 @@ make_plot_by_input_colormap <-
     )
     
   } else {
-    
-    no_vp_flow(input_origin, input_destination)
+    # TODO: Better error message when there is not shared vp_flow
+    # BODY: see https://shiny.rstudio.com/articles/validation.html
+    no_vp_flow()
     
   }
   
