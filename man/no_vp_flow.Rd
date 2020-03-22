@@ -4,12 +4,7 @@
 \alias{no_vp_flow}
 \title{Informs when countries doesn't have relationships}
 \usage{
-no_vp_flow(origin, destination)
-}
-\arguments{
-\item{origin}{selected "Exporting countries"}
-
-\item{destination}{select "Import countries"}
+no_vp_flow()
 }
 \value{
 a plot
