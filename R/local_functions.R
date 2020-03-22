@@ -267,7 +267,7 @@ vp_flow_arrows_plot <- function(virtual_pollinators_flow_filtered, base_world_ma
       legend.title = element_text(size = 20),
       legend.text = element_text(size = 20)
     ) +
-    labs(colour = "Virtual Biotic\nPollination Flow (tons)")
+    labs(alpha = "Virtual Biotic\nPollination Flow (tons)")
   
   print(virtual_pollinators_plot)
   
