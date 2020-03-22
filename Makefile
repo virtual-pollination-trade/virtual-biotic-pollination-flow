@@ -8,7 +8,7 @@ deploy:
 	Rscript -e "rsconnect::deployApp('.')"
 
 show_logs:
-	Rscript -e "rsconnect::showLogs()"
+	Rscript -e "rsconnect::showLogs(entries = 200)"
 
 show_online:
 	Rscript -e "utils::browseURL('https://kguidonimartins.shinyapps.io/virtual-pollinators-flow-app/')"
