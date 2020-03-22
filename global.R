@@ -1,9 +1,10 @@
 message("\nLoading global.R file ...\n")
+
 message("\tLoading packages ...\n")
 suppressPackageStartupMessages({
   library(shiny)
-  library(tidyverse)
-  library(fs)
+  library(dplyr)
+  library(ggplot2)
   library(here)
   library(usethis)
   library(qs)
@@ -13,10 +14,10 @@ suppressPackageStartupMessages({
 })
 
 message("\tLoading local_functions.R file ...\n")
-source(here("R", "local_functions.R"), local = TRUE)
+source(here("R", "local_functions.R"))
 
 message("\tLoading modules.R file ...\n")
-source(here("R", "modules.R"), local = TRUE)
+source(here("R", "modules.R"))
 
 message("\tLoading data ...\n")
 virtual_pollinators_flow <-

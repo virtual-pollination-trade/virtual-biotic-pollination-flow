@@ -1,4 +1,4 @@
-source("./global.R", local = TRUE)
+source("./global.R")
 
 ui <- fluidPage(
 
@@ -130,7 +130,7 @@ server <- function(input, output) {
         print()
 
       cat("\n\n")
-      ui_todo("Creating map ...\n\n")
+      usethis::ui_todo("Creating map ...\n\n")
 
       make_plot_by_input_colormap(
         data_filtered = virtual_pollinators_flow_filtered,
@@ -144,7 +144,7 @@ server <- function(input, output) {
     })
     
     cat("\n")
-    ui_done("Map done!\n\n")
+    usethis::ui_done("Map done!\n\n")
 
   })
 
