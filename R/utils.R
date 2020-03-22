@@ -1,0 +1,17 @@
+globalVariables(
+  c(
+    "reporter_countries",
+    "partner_countries",
+    "reporter_long",
+    "reporter_lat",
+    "reporter_hdi",
+    "partner_long",
+    "partner_lat",
+    "partner_hdi",
+    "year",
+    "vp_flow",
+    ".",
+    "hdi",
+    "item_code"
+  )
+)

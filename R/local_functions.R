@@ -1,11 +1,15 @@
 message("\t\tLoading functions ...\n")
 
-#' Title
+#' Read vp_flow data
 #'
-#' @return
+#' @return a tibble
+#' 
+#' @import here
+#' @import qs
+#' @import dplyr
+#' 
 #' @export
 #'
-#' @examples
 read_vp_flow_data <- function() {
   
   here::here("data", "virtual-pollinators-flow.qs") %>%
@@ -15,12 +19,15 @@ read_vp_flow_data <- function() {
   
 }
 
-#' Title
+#' Read country features data
 #'
-#' @return
+#' @return a object of class sf
+#' 
+#' @import here
+#' @import qs
+#' 
 #' @export
 #'
-#' @examples
 read_sf_data <- function() {
   
   here::here("data", "country-features-with-sf-geometry.qs") %>%
@@ -28,14 +35,16 @@ read_sf_data <- function() {
   
 }
 
-#' Title
+#' Filter distinct report and partner countries
 #'
-#' @param data 
+#' @param data raw data
 #'
-#' @return
+#' @return a filtered tibble
+#' 
+#' @import dplyr
+#' 
 #' @export
 #'
-#' @examples
 distinct_countries <- function(data) {
 
   data %>%
@@ -59,14 +68,18 @@ distinct_countries <- function(data) {
 
 }
 
-#' Title
+#' Summarise vp_flow data for all years
+#' 
+#' @description Used when all years are choosed in the input panel
 #'
-#' @param data 
+#' @param data filtered data by `distinct_countries()`
 #'
-#' @return
+#' @return a tibble
+#' 
+#' @import dplyr
+#' 
 #' @export
 #'
-#' @examples
 summarise_vp_flow_all_years <- function(data) {
 
   data %>%
@@ -89,15 +102,18 @@ summarise_vp_flow_all_years <- function(data) {
 
 }
 
-#' Title
+#' Summarise minimum and maximum values of vp_flow for the choosed years 
+#' in the input panel
 #'
-#' @param data 
-#' @param year 
+#' @param data filtered data 
+#' @param year choosed year in the input panel
 #'
-#' @return
+#' @import dplyr
+#'
+#' @return a tibble
+#' 
 #' @export
 #'
-#' @examples
 min_max_vp_flow_by_input_year <- function(data, year) {
   
   if (year == "All years") {
@@ -130,15 +146,18 @@ min_max_vp_flow_by_input_year <- function(data, year) {
 }
 
 
-#' Title
+#' Create base map for the plot in the output panel
 #'
-#' @param data_sf 
-#' @param filled_by 
+#' @param data_sf the sf object read by `read_sf_data()`
+#' @param filled_by the colormap choosed in the input panel
+#' 
+#' @import ggplot2
+#' @import sf
 #'
-#' @return
+#' @return a sf object
+#' 
 #' @export
 #'
-#' @examples
 plot_sf_map <- function(data_sf, filled_by) {
   
   if (filled_by == "None") {
@@ -171,16 +190,21 @@ plot_sf_map <- function(data_sf, filled_by) {
   
 }
 
-#' Title
+#' Create the final plot
+#' 
+#' @param virtual_pollinators_flow_filtered the filtered data which already 
+#' passed by `distinct_countries()` and by `summarise_vp_flow_all_years()`, 
+#' if choosed in the input panel
+#' @param base_world_map the sf object created by `plot_sf_map()`
+#' @param vp_flow_year  the filtered data created by `min_max_vp_flow_by_input_year()`
+#' 
+#' @import ggplot2
+#' @import scales
 #'
-#' @param virtual_pollinators_flow_filtered 
-#' @param base_world_map 
-#' @param vp_flow_year 
-#'
-#' @return
+#' @return a ggplot object: the final plot
+#' 
 #' @export
 #'
-#' @examples
 vp_flow_arrows_plot <- function(virtual_pollinators_flow_filtered, base_world_map, vp_flow_year) {
   
   virtual_pollinators_plot <-
@@ -249,15 +273,17 @@ vp_flow_arrows_plot <- function(virtual_pollinators_flow_filtered, base_world_ma
   
 }
 
-#' Title
+#' Informs when countries doesn't have relationships
 #'
-#' @param origin 
-#' @param destination 
+#' @param origin selected "Exporting countries"
+#' @param destination select "Import countries"
+#' 
+#' @import graphics
 #'
-#' @return
+#' @return a plot
+#' 
 #' @export
 #'
-#' @examples
 no_vp_flow <- function(origin, destination) {
   
   plot(
@@ -280,15 +306,17 @@ no_vp_flow <- function(origin, destination) {
   
 }
 
-#' Title
+#' Reorder country names and create a vector variable for the input panel
 #'
-#' @param data 
-#' @param countries_type 
+#' @param data raw data
+#' @param countries_type reporter or partner countries
+#' 
+#' @import dplyr
 #'
-#' @return
+#' @return an ordered vector
+#' 
 #' @export
 #'
-#' @examples
 distinct_input_select_countries <- function(data, countries_type) {
   
   data %>%
@@ -300,14 +328,16 @@ distinct_input_select_countries <- function(data, countries_type) {
   
 }
 
-#' Title
+#' Reorder years and create a vector variable for the input panel
 #'
-#' @param data 
+#' @param data raw data
+#' 
+#' @import dplyr
 #'
-#' @return
+#' @return an ordered vector
+#' 
 #' @export
 #'
-#' @examples
 distinct_input_select_years <- function(data) {
   
   data %>%

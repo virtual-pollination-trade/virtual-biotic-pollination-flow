@@ -128,7 +128,7 @@ server <- function(input, output) {
       ui_todo("Creating map ...\n\n")
 
       make_plot_by_input_colormap(
-        data_clean = virtual_pollinators_flow_filtered,
+        data_filtered = virtual_pollinators_flow_filtered,
         data_sf = country_features_with_sf_geometry,
         data_year = vp_flow_year,
         input_colormap = input$colormap,

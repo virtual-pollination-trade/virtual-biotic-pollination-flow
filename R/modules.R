@@ -9,7 +9,6 @@ message("\t\tLoadind modules ...\n")
 #' @return
 #' @export
 #'
-#' @examples
 filter_countries_by_input_select_countries <- function(data_raw, input_origin, input_destination) {
   
   origin <- input_origin
@@ -100,7 +99,6 @@ filter_countries_by_input_select_countries <- function(data_raw, input_origin, i
 #' @return
 #' @export
 #'
-#' @examples
 filter_countries_by_input_select_year <- function(data_filtered_by_countries, input_year) {
   
   if (input_year == "All years") {
@@ -130,7 +128,6 @@ filter_countries_by_input_select_year <- function(data_filtered_by_countries, in
 #' @return
 #' @export
 #'
-#' @examples
 filter_year_by_input_select_year <- function(data_raw, input_year) {
   
   if (input_year == "All years") {
@@ -155,7 +152,7 @@ filter_year_by_input_select_year <- function(data_raw, input_year) {
 
 #' Title
 #'
-#' @param data_clean 
+#' @param data_filtered 
 #' @param data_sf 
 #' @param data_year 
 #' @param input_colormap 
@@ -165,10 +162,9 @@ filter_year_by_input_select_year <- function(data_raw, input_year) {
 #' @return
 #' @export
 #'
-#' @examples
 make_plot_by_input_colormap <- 
   function(
-    data_clean, 
+    data_filtered, 
     data_sf, 
     data_year, 
     input_colormap, 
@@ -190,10 +186,10 @@ make_plot_by_input_colormap <-
     
   }
   
-  if (nrow(data_clean) != 0) {
+  if (nrow(data_filtered) != 0) {
     
     vp_flow_arrows_plot(
-      data_clean, 
+      data_filtered, 
       base_world_map, 
       data_year
     )
