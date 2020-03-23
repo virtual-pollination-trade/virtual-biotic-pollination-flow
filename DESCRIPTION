@@ -17,5 +17,7 @@ Imports:
   qs,
   scales,
   sf,
-  usethis
-
+  usethis,
+  xpectr
+Suggests: 
+    testthat (>= 2.1.0)

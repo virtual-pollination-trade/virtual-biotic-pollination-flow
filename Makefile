@@ -35,3 +35,22 @@ show_online:
 	@echo
 	Rscript -e "utils::browseURL('https://kguidonimartins.shinyapps.io/virtual-biotic-pollination-flow/')"
 	@echo
+
+tests:
+	@echo
+	@echo "--------------------------------"
+	@echo "        Running tests           "
+	@echo "--------------------------------"
+	@echo
+	Rscript -e "devtools::test()"
+	@echo
+
+check:
+	@echo
+	@echo "--------------------------------"
+	@echo "        Checking package        "
+	@echo "--------------------------------"
+	@echo
+	Rscript -e "devtools::check()"
+	@echo
+
