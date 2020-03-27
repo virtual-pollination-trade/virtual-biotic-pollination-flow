@@ -1,9 +1,9 @@
 source("./global.R", local = TRUE)
 
 input <- list()
-input$origin <- "Brazil"
-input$destination <- "China"
-input$year <- 2001
+input$origin <- "United States of America"
+input$destination <- "All countries"
+input$year <- "All years"
 input$colormap <- "HDI"
 
 ############################################################
@@ -58,7 +58,7 @@ cat("\n\n")
 ui_todo("Creating map ...\n\n")
 
 make_plot_by_input_colormap(
-  data_clean = virtual_pollinators_flow_filtered,
+  data_filtered = virtual_pollinators_flow_filtered,
   data_sf = country_features_with_sf_geometry,
   data_year = vp_flow_year,
   input_colormap = input$colormap,
