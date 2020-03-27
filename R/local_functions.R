@@ -31,7 +31,16 @@ read_vp_flow_data <- function() {
 read_sf_data <- function() {
   
   here::here("data", "country-features-with-sf-geometry.qs") %>%
-    qread()
+    qread() %>% 
+    mutate(
+      hdi = case_when(
+        admin == "Antarctica" ~ NA_real_,
+        admin == "Greenland" ~ NA_real_,
+        TRUE ~ as.numeric(hdi)
+      ),
+      hdi = if_else(hdi == 0, NA_real_, hdi)
+    )
+  
   
 }
 
