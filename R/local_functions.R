@@ -252,8 +252,9 @@ vp_flow_arrows_plot <- function(virtual_pollinators_flow_filtered, base_world_ma
     # ) +
     scale_alpha(
       n.breaks = 10,
+      breaks = breaks_extended(n = 10),
       range = c(0.1, 1),
-      label = comma_format(accuracy = 10),
+      label = comma_format(),
       limits = c(vp_flow_year$vp_flow_min, vp_flow_year$vp_flow_max)
     ) +
     guides(

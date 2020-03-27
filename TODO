@@ -12,7 +12,7 @@
 ✔ remover países com o HDI == 0; os polígonos devem ser mantidos, mas os valores precisam ser convertidos para NA; as cores devem ficar brancas. @done(20-03-27 16:37)
 ☐ fixar limites do alpha igual é a do gradiente de cor do vp_flow (era, porque deve ser removido); ver próximo item
 ✔ remover gradiente de cores do vp_flow e adotar apenas uma cor @done(20-03-22 16:51)
-☐ aumentar o número de classes de alpha para diminuir
+✔ aumentar o número de classes de alpha @done(20-03-27 16:40)
 ✔ incluir um botão para baixar a figura: @done(20-03-22 16:51)
       - https://shiny.rstudio.com/articles/action-buttons.html
       - https://stackoverflow.com/questions/14810409/save-plots-made-in-a-shiny-app
