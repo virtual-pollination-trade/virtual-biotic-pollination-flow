@@ -1,0 +1,21 @@
+✘ reverse `scale_alpha_continuous` @cancelled(20-03-10 14:27)
+✔ format `vp_flow` with `comma_format` @done(20-03-10 14:27)
+✔ run R/setup_shinyapp_account_via_rsconnect_package.R @done(20-03-02 16:43)
+✔ check https://www.shinyapps.io/admin/#/dashboard @done(20-03-02 16:43)
+✔ following steps of https://shiny.rstudio.com/articles/shinyapps.html @done(20-03-02 16:43)
+✔ deploy with `make deploy` @done(20-03-02 16:43)
+✔ trocar nomes da caixas de seleção @done(20-03-03 12:14)
+✔ fixar da escala (valores máximos e mínimos ) de cor dentro dos anos e para todos os anos @done(20-03-10 14:27)
+✘ adicionar `slideInput` para os fluxos @cancelled(20-03-10 14:27)
+✘ melhorar escala de transparência nas setas de fluxo: a Luísa questionou pq sempre aparece uma seta mais forte do que a outra; ajustar range de c(0, 1) para c(4, 8) @cancelled(20-03-10 14:27)
+☐ trocar `scale_color_gradient` das setas para algo parecido com o `scale_color_discrete`
+☐ remover países com o HDI == 0; os polígonos devem ser mantidos, mas os valores precisam ser convertidos para NA; as cores devem ficar brancas.
+☐ fixar limites do alpha igual é a do gradiente de cor do vp_flow (era, porque deve ser removido); ver próximo item
+✔ remover gradiente de cores do vp_flow e adotar apenas uma cor @done(20-03-22 16:51)
+☐ aumentar o número de classes de alpha para diminuir
+✔ incluir um botão para baixar a figura: @done(20-03-22 16:51)
+      - https://shiny.rstudio.com/articles/action-buttons.html
+      - https://stackoverflow.com/questions/14810409/save-plots-made-in-a-shiny-app
+☐ ?incluir `annotate text` na figura baixada
+☐ mudar layout para tabpanel
+☐ mudar para selectInput para uma linha, tipo: http://shiny.njit.edu/app/07_covid19/
