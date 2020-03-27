@@ -6,7 +6,7 @@ ui <- fluidPage(
   tags$head(includeHTML(("www/google-analytics.html"))),
 
   # path css file
-  # theme = "style.css",
+  # theme = shinytheme("united"),
 
   # Application title
   titlePanel("Virtual Biotic Pollination Flow"),

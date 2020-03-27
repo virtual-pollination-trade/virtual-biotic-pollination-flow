@@ -18,6 +18,7 @@ Imports:
   scales,
   sf,
   usethis,
-  xpectr
+  xpectr,
+  shinythemes
 Suggests: 
     testthat (>= 2.1.0)

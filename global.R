@@ -11,6 +11,7 @@ suppressPackageStartupMessages({
   library(glue)
   library(sf)
   library(scales)
+  library(shinythemes)
 })
 
 message("\tLoading local_functions.R file ...\n")
