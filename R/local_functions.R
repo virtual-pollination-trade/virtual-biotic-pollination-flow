@@ -259,12 +259,17 @@ vp_flow_arrows_plot <- function(virtual_pollinators_flow_filtered, base_world_ma
     ) +
     guides(
       alpha = guide_legend(
+        order = 1,
         reverse = TRUE, 
         override.aes = list(
           size = 2, 
           shape = 22, 
           fill = "blue"
         )
+      ),
+      fill = guide_legend(
+        order = 2,
+        reverse = TRUE
       )
     ) +
     theme_void(
@@ -272,13 +277,16 @@ vp_flow_arrows_plot <- function(virtual_pollinators_flow_filtered, base_world_ma
       base_family = "Arial"
     ) +
     theme(
-      legend.position = "bottom",
+      legend.position = "right",
       legend.direction = "vertical",
       legend.justification = "center",
       legend.title = element_text(size = 20),
-      legend.text = element_text(size = 20)
+      legend.text = element_text(size = 20),
+      # legend.spacing = unit(0.4, "cm"),
+      legend.spacing.y = unit(0.5, "cm"),
+      legend.margin = margin(1, 1, 1, 1)
     ) +
-    labs(alpha = "Virtual Biotic\nPollination Flow (tons)")
+    labs(alpha = "Virtual Biotic\nPollination Flow (tons)") 
   
   print(virtual_pollinators_plot)
   
