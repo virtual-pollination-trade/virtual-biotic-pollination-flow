@@ -188,10 +188,11 @@ plot_sf_map <- function(data_sf, filled_by) {
       ggplot() +
       geom_sf(aes(fill = hdi)) +
       scale_fill_gradientn(
-        colours = hdi_fill_colors,
+        colours = hdi_fill_colors, 
+        na.value = "white"
         # limits = c(0, 1)
       ) +
-      labs(fill = "HDI\n") +
+      labs(fill = "HDI") +
       ylim(c(-100, 100))
   }
   
