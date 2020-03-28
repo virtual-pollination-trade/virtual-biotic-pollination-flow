@@ -12,7 +12,7 @@ message("\t\tLoading functions ...\n")
 #'
 read_vp_flow_data <- function() {
   
-  here::here("data", "virtual-pollinators-flow.qs") %>%
+  here::here("inst", "extdata", "virtual-pollinators-flow.qs") %>%
     qread() %>%
     filter(item_code != 0) %>%
     .[.$reporter_countries != .$partner_countries, ]
@@ -30,7 +30,7 @@ read_vp_flow_data <- function() {
 #'
 read_sf_data <- function() {
   
-  here::here("data", "country-features-with-sf-geometry.qs") %>%
+  here::here("inst", "extdata", "country-features-with-sf-geometry.qs") %>%
     qread() %>% 
     mutate(
       hdi = case_when(
