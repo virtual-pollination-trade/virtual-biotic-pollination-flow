@@ -2,20 +2,20 @@ source("./global.R")
 
 column_width <- 3
 
-ui <- 
+ui <-
   navbarPage(
 
-    title = "Virtual Biotic Pollination Flow", 
+    title = "Virtual Biotic Pollination Flow",
 
-    collapsible = TRUE, 
+    collapsible = TRUE,
 
-    inverse = TRUE, 
+    inverse = TRUE,
 
     theme = shinytheme("paper"),
 
     tabPanel(
 
-      title = "Map", 
+      title = "Map",
 
       fluidPage(
 
@@ -42,17 +42,17 @@ ui <-
 
                  column(
 
-                   width = column_width,  
+                   width = column_width,
 
                    wellPanel(
 
                      selectInput(
-                       inputId = "destination", 
-                       label = "Import country", 
-                       choices = destination_select_input, 
-                       multiple = TRUE, 
-                       selected = "All countries", 
-                       selectize = TRUE 
+                       inputId = "destination",
+                       label = "Import country",
+                       choices = destination_select_input,
+                       multiple = TRUE,
+                       selected = "All countries",
+                       selectize = TRUE
                      )
 
                    )
@@ -61,16 +61,16 @@ ui <-
 
                  column(
 
-                   width = column_width,  
+                   width = column_width,
 
                    wellPanel(
 
                      selectInput(
-                       inputId = "year", 
-                       label = "Year", 
-                       choices = year_select_input, 
-                       selected = "All years", 
-                       selectize = TRUE 
+                       inputId = "year",
+                       label = "Year",
+                       choices = year_select_input,
+                       selected = "All years",
+                       selectize = TRUE
                        )
 
                    )
@@ -79,13 +79,13 @@ ui <-
 
                  column(
 
-                   width = column_width,  
+                   width = column_width,
 
                    wellPanel(
 
                      selectInput(
-                       inputId = "colormap", 
-                       label = "Socioeconomic aspect", 
+                       inputId = "colormap",
+                       label = "Socioeconomic aspect",
                        choices = colormap_select_input,
                        selected = "None", selectize = TRUE
                      )
@@ -94,17 +94,17 @@ ui <-
 
                  )
 
-               ),  
+               ),
 
                mainPanel(
 
-                 align = "center",  
+                 align = "center",
 
                  plotOutput(
-                   outputId = "map", 
-                   width = "1400px", 
+                   outputId = "map",
+                   width = "1200px",
                    height = "600px"
-                 ),  
+                 ),
 
                  verbatimTextOutput(
                    outputId = "report"
@@ -116,17 +116,17 @@ ui <-
 
       fixedRow(
 
-        align = "right", 
+        align = "right",
 
         column(
 
-          width = 12, 
+          width = 12,
 
-          offset = 0,  
+          offset = 0,
 
           actionButton(
             inputId = "make_plot",  label = "Reload map", icon("sync-alt")
-          ), 
+          ),
 
           downloadButton(
             outputId = "download_map", label = "Download map"
@@ -134,7 +134,7 @@ ui <-
 
         )
 
-      )  
+      )
 
       ),
 
@@ -143,35 +143,35 @@ ui <-
     )
 
 server <- function(input, output) {
-  
+
   message("\n\nLoading server ...\n\n")
-  
+
   virtual_pollinators_flow_filtered <- reactive({
-    
-    virtual_pollinators_flow %>% 
+
+    virtual_pollinators_flow %>%
       filter_countries_by_input_select_countries(
-        input_origin = input$origin, 
+        input_origin = input$origin,
         input_destination = input$destination
       ) %>%
       filter_countries_by_input_select_year(input_year = input$year)
-    
+
   })
-  
+
   vp_flow_year <- reactive({
-    
+
     virtual_pollinators_flow %>%
       filter_year_by_input_select_year(input$year)
-    
+
   })
-  
+
   plotInput <- reactive({
-    
+
     input$make_plot
-    
+
     data_filtered <- virtual_pollinators_flow_filtered()
     data_sf <- country_features_with_sf_geometry
     data_year <- vp_flow_year()
-    
+
     make_plot_by_input_colormap(
       data_filtered = data_filtered,
       data_sf = data_sf,
@@ -180,20 +180,20 @@ server <- function(input, output) {
       input_origin = input$origin,
       input_destination = input$destination
     )
-    
+
   })
-      
+
   output$map <- renderPlot({
 
     req(input$origin)
     req(input$destination)
-    
+
     withProgress(
 
       message = "Creating map ...", {
-        
+
       message("Checking input variables ...\n\n")
-      
+
       print(input$origin)
       print(input$destination)
       print(input$year)
@@ -219,14 +219,14 @@ server <- function(input, output) {
 
       vp_flow_year() %>%
         print()
-      
+
       cat("\n\n")
       usethis::ui_todo("Creating map ...\n\n")
 
       plotInput()
-      
+
     })
-    
+
     cat("\n")
     usethis::ui_done("Map done!\n\n")
 
@@ -234,20 +234,26 @@ server <- function(input, output) {
 
   # output$report <-
   #   renderText({
-  #     
+  #
   #   })
-  
+
   output$download_map <- downloadHandler(
     filename = "flow_map.png",
     content = function(file) {
-      
+
       usethis::ui_todo("Saving map ...\n\n")
-      
-      ggsave(filename = file, plot = plotInput())
-      
+
+      ggsave(
+        filename = file,
+        plot = plotInput(),
+        width = 50,
+        height = 40,
+        units = "cm"
+      )
+
       cat("\n")
       usethis::ui_done("Map saved!\n\n")
-      
+
     })
 
 }
