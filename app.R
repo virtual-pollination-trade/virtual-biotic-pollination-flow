@@ -1,73 +1,146 @@
 source("./global.R")
 
-ui <- fluidPage(
+column_width <- 3
 
-  # path google analytics
-  tags$head(includeHTML(("www/google-analytics.html"))),
+ui <- 
+  navbarPage(
 
-  # path css file
-  # theme = shinytheme("united"),
+    title = "Virtual Biotic Pollination Flow", 
 
-  # Application title
-  titlePanel("Virtual Biotic Pollination Flow"),
+    collapsible = TRUE, 
 
-  # Sidebar application menu
-  sidebarLayout(
+    inverse = TRUE, 
 
-    sidebarPanel(
-      width = 3,
+    theme = shinytheme("paper"),
 
-      selectInput(
-        inputId = "origin",
-        label = "Exporting country",
-        choices = origin_select_input,
-        multiple = TRUE,
-        selected = "United States of America",
-        selectize = TRUE
+    tabPanel(
+
+      title = "Map", 
+
+      fluidPage(
+
+               fluidRow(
+
+                 column(
+
+                   width = column_width,
+
+                   wellPanel(
+
+                      selectInput(
+                        inputId = "origin",
+                        label = "Exporting country",
+                        choices = origin_select_input,
+                        multiple = TRUE,
+                        selected = "United States of America",
+                        selectize = TRUE
+                        )
+
+                      )
+
+                    ),
+
+                 column(
+
+                   width = column_width,  
+
+                   wellPanel(
+
+                     selectInput(
+                       inputId = "destination", 
+                       label = "Import country", 
+                       choices = destination_select_input, 
+                       multiple = TRUE, 
+                       selected = "All countries", 
+                       selectize = TRUE 
+                     )
+
+                   )
+
+                 ),
+
+                 column(
+
+                   width = column_width,  
+
+                   wellPanel(
+
+                     selectInput(
+                       inputId = "year", 
+                       label = "Year", 
+                       choices = year_select_input, 
+                       selected = "All years", 
+                       selectize = TRUE 
+                       )
+
+                   )
+
+                 ),
+
+                 column(
+
+                   width = column_width,  
+
+                   wellPanel(
+
+                     selectInput(
+                       inputId = "colormap", 
+                       label = "Socioeconomic aspect", 
+                       choices = colormap_select_input,
+                       selected = "None", selectize = TRUE
+                     )
+
+                   )
+
+                 )
+
+               ),  
+
+               mainPanel(
+
+                 align = "center",  
+
+                 plotOutput(
+                   outputId = "map", 
+                   width = "1400px", 
+                   height = "600px"
+                 ),  
+
+                 verbatimTextOutput(
+                   outputId = "report"
+                 )
+
+               )
+
+             ),
+
+      fixedRow(
+
+        align = "right", 
+
+        column(
+
+          width = 12, 
+
+          offset = 0,  
+
+          actionButton(
+            inputId = "make_plot",  label = "Reload map", icon("sync-alt")
+          ), 
+
+          downloadButton(
+            outputId = "download_map", label = "Download map"
+          )
+
+        )
+
+      )  
+
       ),
 
-      selectInput(
-        inputId = "destination",
-        label = "Import country",
-        choices = destination_select_input,
-        multiple = TRUE,
-        selected = "All countries",
-        selectize = TRUE
-      ),
-
-      selectInput(
-        inputId = "year",
-        label = "Year",
-        choices = year_select_input,
-        selected = "All years",
-        selectize = TRUE
-      ),
-
-      selectInput(
-        inputId = "colormap",
-        label = "Socioeconomic aspect",
-        choices = colormap_select_input,
-        selected = "None",
-        selectize = TRUE
-      ),
-
-      actionButton(inputId = "make_plot", label = "Reload map", icon("sync-alt")),
-      
-      downloadButton(outputId = "download_map", label = "Download map")
-
-    ),
-
-    # Show map
-    mainPanel(
-
-      plotOutput(outputId = "map", height = "700px", width = "100%"),
-
-      verbatimTextOutput(outputId = "report")
+    tabPanel(title = "About")
 
     )
-  ),
-  # tags$p("Silva *et al.*, 2019...")
-)
 
 server <- function(input, output) {
   

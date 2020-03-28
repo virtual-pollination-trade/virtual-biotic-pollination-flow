@@ -17,5 +17,5 @@
       - https://shiny.rstudio.com/articles/action-buttons.html
       - https://stackoverflow.com/questions/14810409/save-plots-made-in-a-shiny-app
 ☐ ?incluir `annotate text` na figura baixada
-☐ mudar layout para tabpanel
-☐ mudar para selectInput para uma linha, tipo: http://shiny.njit.edu/app/07_covid19/
+✔ mudar layout para tabpanel @done(20-03-27 16:51)
+✔ mudar para selectInput para uma linha, tipo: http://shiny.njit.edu/app/07_covid19/ @done (3/27/2020, 4:50:53 PM)
