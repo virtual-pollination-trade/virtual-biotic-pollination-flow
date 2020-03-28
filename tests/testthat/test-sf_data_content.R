@@ -1,5 +1,5 @@
 pkg_data <- 
-  system.file("extdata/country-features-with-sf-geometry.qs", package="vbpflow")
+  system.file("extdata", "country-features-with-sf-geometry.qs", package="vbpflow")
 
 sf_data <- 
   qread(pkg_data) 

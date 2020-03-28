@@ -1,7 +1,7 @@
 # df <- read_vp_flow_data()
 
 pkg_data <- 
-  system.file("extdata/virtual-pollinators-flow.qs", package="vbpflow")
+  system.file("extdata", "virtual-pollinators-flow.qs", package="vbpflow")
 
 df <- 
   qread(pkg_data) %>%

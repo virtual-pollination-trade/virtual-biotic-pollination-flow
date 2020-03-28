@@ -1,5 +1,5 @@
 pkg_data <- 
-  system.file("extdata/virtual-pollinators-flow.qs", package="vbpflow")
+  system.file("extdata", "virtual-pollinators-flow.qs", package="vbpflow")
 
 vp_flow_data <- 
   qread(pkg_data) %>%
