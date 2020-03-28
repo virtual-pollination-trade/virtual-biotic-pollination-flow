@@ -1,2 +1,10 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+.testing.R
+global.R
+Makefile
+app.R
+rsconnect/
+www/
+tests/test-shinyapp-session.R
+^LICENSE\.md$
