@@ -2,7 +2,7 @@
 % Please edit documentation in R/modules.R
 \name{filter_countries_by_input_select_countries}
 \alias{filter_countries_by_input_select_countries}
-\title{Title}
+\title{Filter countries by input selection}
 \usage{
 filter_countries_by_input_select_countries(
   data_raw,
@@ -11,15 +11,15 @@ filter_countries_by_input_select_countries(
 )
 }
 \arguments{
-\item{data_raw}{}
+\item{data_raw}{Data raw}
 
-\item{input_origin}{}
+\item{input_origin}{Input reporter_countries}
 
-\item{input_destination}{}
+\item{input_destination}{Input partner_countries}
 }
 \value{
-
+a filtered tibble
 }
 \description{
-Title
+Filter countries by input selection
 }

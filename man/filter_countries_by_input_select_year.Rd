@@ -2,18 +2,18 @@
 % Please edit documentation in R/modules.R
 \name{filter_countries_by_input_select_year}
 \alias{filter_countries_by_input_select_year}
-\title{Title}
+\title{Filter values based on year}
 \usage{
 filter_countries_by_input_select_year(data_filtered_by_countries, input_year)
 }
 \arguments{
-\item{data_filtered_by_countries}{}
+\item{data_filtered_by_countries}{a pre filtered tibble resulting from \code{filter_countries_by_input_select_countries()}}
 
-\item{input_year}{}
+\item{input_year}{Input year}
 }
 \value{
-
+a refiltered tibble
 }
 \description{
-Title
+Filter values based on year
 }

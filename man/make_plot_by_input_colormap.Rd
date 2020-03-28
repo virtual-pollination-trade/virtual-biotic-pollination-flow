@@ -2,7 +2,7 @@
 % Please edit documentation in R/modules.R
 \name{make_plot_by_input_colormap}
 \alias{make_plot_by_input_colormap}
-\title{Title}
+\title{High-order function the plot the final maps}
 \usage{
 make_plot_by_input_colormap(
   data_filtered,
@@ -14,21 +14,21 @@ make_plot_by_input_colormap(
 )
 }
 \arguments{
-\item{data_filtered}{}
+\item{data_filtered}{prefiltered tibble}
 
-\item{data_sf}{}
+\item{data_sf}{sf data}
 
-\item{data_year}{}
+\item{data_year}{prefiltered tibble with min and max vp_flow values}
 
-\item{input_colormap}{}
+\item{input_colormap}{input colormap}
 
-\item{input_origin}{}
+\item{input_origin}{input reporter_countries}
 
-\item{input_destination}{}
+\item{input_destination}{input partner_countries}
 }
 \value{
-
+a map
 }
 \description{
-Title
+High-order function the plot the final maps
 }

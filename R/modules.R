@@ -1,12 +1,12 @@
 message("\t\tLoadind modules ...\n")
 
-#' Title
+#' Filter countries by input selection
 #'
-#' @param data_raw 
-#' @param input_origin 
-#' @param input_destination 
+#' @param data_raw Data raw
+#' @param input_origin Input reporter_countries
+#' @param input_destination Input partner_countries
 #'
-#' @return
+#' @return a filtered tibble
 #' @export
 #'
 filter_countries_by_input_select_countries <- function(data_raw, input_origin, input_destination) {
@@ -91,12 +91,12 @@ filter_countries_by_input_select_countries <- function(data_raw, input_origin, i
 }
 
 
-#' Title
+#' Filter values based on year
 #'
-#' @param data_filtered_by_countries 
-#' @param input_year 
+#' @param data_filtered_by_countries a pre filtered tibble resulting from \code{filter_countries_by_input_select_countries()}
+#' @param input_year Input year
 #'
-#' @return
+#' @return a refiltered tibble
 #' @export
 #'
 filter_countries_by_input_select_year <- function(data_filtered_by_countries, input_year) {
@@ -120,12 +120,13 @@ filter_countries_by_input_select_year <- function(data_filtered_by_countries, in
 }
 
 
-#' Title
+#' Filter and create a tibble with the minimum and maximum values of vp_flow 
+#' to used at plot colors scale
 #'
-#' @param data_raw 
-#' @param input_year 
+#' @param data_raw data rae
+#' @param input_year input year
 #'
-#' @return
+#' @return a filtered tibble
 #' @export
 #'
 filter_year_by_input_select_year <- function(data_raw, input_year) {
@@ -150,16 +151,16 @@ filter_year_by_input_select_year <- function(data_raw, input_year) {
 }
 
 
-#' Title
+#' High-order function the plot the final maps
 #'
-#' @param data_filtered 
-#' @param data_sf 
-#' @param data_year 
-#' @param input_colormap 
-#' @param input_origin 
-#' @param input_destination 
+#' @param data_filtered prefiltered tibble
+#' @param data_sf sf data
+#' @param data_year prefiltered tibble with min and max vp_flow values 
+#' @param input_colormap input colormap
+#' @param input_origin input reporter_countries
+#' @param input_destination input partner_countries
 #'
-#' @return
+#' @return a map
 #' @export
 #'
 make_plot_by_input_colormap <- 

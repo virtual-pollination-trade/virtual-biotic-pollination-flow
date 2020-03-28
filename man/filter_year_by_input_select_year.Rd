@@ -2,18 +2,20 @@
 % Please edit documentation in R/modules.R
 \name{filter_year_by_input_select_year}
 \alias{filter_year_by_input_select_year}
-\title{Title}
+\title{Filter and create a tibble with the minimum and maximum values of vp_flow 
+to used at plot colors scale}
 \usage{
 filter_year_by_input_select_year(data_raw, input_year)
 }
 \arguments{
-\item{data_raw}{}
+\item{data_raw}{data rae}
 
-\item{input_year}{}
+\item{input_year}{input year}
 }
 \value{
-
+a filtered tibble
 }
 \description{
-Title
+Filter and create a tibble with the minimum and maximum values of vp_flow 
+to used at plot colors scale
 }
