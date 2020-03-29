@@ -11,8 +11,8 @@ vp_flow_arrows_plot(
 )
 }
 \arguments{
-\item{virtual_pollinators_flow_filtered}{the filtered data which already 
-passed by `distinct_countries()` and by `summarise_vp_flow_all_years()`, 
+\item{virtual_pollinators_flow_filtered}{the filtered data which already
+passed by `distinct_countries()` and by `summarise_vp_flow_all_years()`,
 if choosed in the input panel}
 
 \item{base_world_map}{the sf object created by `plot_sf_map()`}
