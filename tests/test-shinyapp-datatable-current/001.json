@@ -1,0 +1,48 @@
+{
+  "input": {
+    "colormap": "HDI",
+    "destination": "Brazil",
+    "make_plot": 0,
+    "origin": "United States of America",
+    "year": "2001"
+  },
+  "output": {
+    "map": {
+      "src": "[image data sha1: 209668fbce34435fd3dbffc16a3df0bb07442127]",
+      "width": 1200,
+      "height": 600,
+      "coordmap": {
+        "panels": [
+          {
+            "domain": {
+              "left": -0.04,
+              "right": 1.04,
+              "bottom": -0.04,
+              "top": 1.04
+            },
+            "range": {
+              "left": 0,
+              "right": 1200,
+              "bottom": 599,
+              "top": -1
+            },
+            "log": {
+              "x": null,
+              "y": null
+            },
+            "mapping": {
+
+            }
+          }
+        ],
+        "dims": {
+          "width": 1200,
+          "height": 600
+        }
+      }
+    }
+  },
+  "export": {
+
+  }
+}
