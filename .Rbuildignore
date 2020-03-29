@@ -7,4 +7,5 @@ app.R
 rsconnect/
 www/
 tests/test-shinyapp-session.R
+tests/testthat/test-distinct_countries_with_item.R
 ^LICENSE\.md$
