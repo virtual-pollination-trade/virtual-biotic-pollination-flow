@@ -138,6 +138,26 @@ ui <-
 
       ),
 
+    tabPanel(
+
+      title = "Shared itens",
+
+      fluidPage(
+
+        mainPanel(
+
+          width = 10,
+
+          align = "center",
+
+          DT::dataTableOutput("shared_item_table")
+
+        )
+
+      )
+
+    ),
+
     tabPanel(title = "About")
 
     )
@@ -255,6 +275,33 @@ server <- function(input, output) {
       usethis::ui_done("Map saved!\n\n")
 
     })
+
+  output$shared_item_table <- DT::renderDataTable({
+
+    virtual_pollinators_flow %>%
+      distinct_countries_with_item(
+        input$origin,
+        input$destination,
+        input$year
+      ) %>%
+      DT::datatable(
+        data = .,
+        filter = "top",
+        options = list(
+          columnDefs = list(
+            list(
+              className = "dt-center"
+            )
+          ),
+          scrollX = TRUE,
+          autowidth = TRUE
+        ),
+        class = "cell-border stripe",
+        width = 1000,
+        height = 20000
+      )
+
+  })
 
 }
 
