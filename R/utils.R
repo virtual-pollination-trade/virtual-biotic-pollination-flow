@@ -12,6 +12,7 @@ globalVariables(
     "vp_flow",
     ".",
     "hdi",
-    "item_code"
+    "item_code",
+    "item"
   )
 )

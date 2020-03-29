@@ -2,7 +2,7 @@
 % Please edit documentation in R/local_functions.R
 \name{min_max_vp_flow_by_input_year}
 \alias{min_max_vp_flow_by_input_year}
-\title{Summarise minimum and maximum values of vp_flow for the choosed years 
+\title{Summarise minimum and maximum values of vp_flow for the choosed years
 in the input panel}
 \usage{
 min_max_vp_flow_by_input_year(data, year)
@@ -16,6 +16,6 @@ min_max_vp_flow_by_input_year(data, year)
 a tibble
 }
 \description{
-Summarise minimum and maximum values of vp_flow for the choosed years 
+Summarise minimum and maximum values of vp_flow for the choosed years
 in the input panel
 }
