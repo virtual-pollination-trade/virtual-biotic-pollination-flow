@@ -204,8 +204,8 @@ plot_sf_map <- function(data_sf, filled_by) {
       geom_sf(aes(fill = hdi)) +
       scale_fill_gradientn(
         colours = hdi_fill_colors,
-        na.value = "white"
-        # limits = c(0, 1)
+        na.value = "white",
+        guide = "colourbar"
       ) +
       labs(fill = "HDI") +
       ylim(c(-100, 100))
@@ -268,24 +268,13 @@ vp_flow_arrows_plot <- function(virtual_pollinators_flow_filtered, base_world_ma
     scale_alpha(
       n.breaks = 10,
       breaks = breaks_extended(n = 10),
-      range = c(0.1, 1),
+      guide = "colourbar"
       label = comma_format(),
       limits = c(vp_flow_year$vp_flow_min, vp_flow_year$vp_flow_max)
     ) +
     guides(
-      alpha = guide_legend(
-        order = 1,
-        reverse = TRUE,
-        override.aes = list(
-          size = 2,
-          shape = 22,
-          fill = "blue"
-        )
-      ),
-      fill = guide_legend(
-        order = 2,
-        reverse = TRUE
-      )
+      colour = guide_colourbar(barheight = 10, order = 1),
+      fill = guide_colourbar(barheight = 10, order = 2)
     ) +
     theme_void(
       base_size = 14,
@@ -296,12 +285,12 @@ vp_flow_arrows_plot <- function(virtual_pollinators_flow_filtered, base_world_ma
       legend.direction = "vertical",
       legend.justification = "center",
       legend.title = element_text(size = 20),
-      legend.text = element_text(size = 20),
-      # legend.spacing = unit(0.4, "cm"),
+      legend.text = element_text(size = 16),
+      legend.spacing = unit(0.5, "cm"),
       legend.spacing.y = unit(0.5, "cm"),
       legend.margin = margin(1, 1, 1, 1)
     ) +
-    labs(alpha = "Virtual Biotic\nPollination Flow (tons)")
+    labs(colour = "Virtual Biotic\nPollination Flow (tons)")
 
   print(virtual_pollinators_plot)
 
