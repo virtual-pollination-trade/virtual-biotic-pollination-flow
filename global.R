@@ -13,6 +13,7 @@ suppressPackageStartupMessages({
   library(scales)
   library(shinythemes)
   library(DT)
+  library(shinydashboard) # CRAN v0.7.1 
 })
 
 message("\tLoading local_functions.R file ...\n")

@@ -158,10 +158,19 @@ ui <-
 
     ),
 
-    tabPanel(title = "About")
+    tabPanel(
+
+      title = "About",
+
+      align = "center",
+
+      shinydashboard::box(
+        align = "center",
+        width = 4,
+        shiny::includeMarkdown("ABOUT.md")
+      )
 
     )
-
 server <- function(input, output) {
 
   message("\n\nLoading server ...\n\n")
