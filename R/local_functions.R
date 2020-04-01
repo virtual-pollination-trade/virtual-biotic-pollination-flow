@@ -225,6 +225,7 @@ plot_sf_map <- function(data_sf, filled_by) {
 #'
 #' @import ggplot2
 #' @import scales
+#' @importFrom grDevices hcl.colors
 #'
 #' @return a ggplot object: the final plot
 #'
@@ -242,14 +243,11 @@ vp_flow_arrows_plot <- function(virtual_pollinators_flow_filtered, base_world_ma
         xend = partner_long,
         yend = partner_lat,
         colour = vp_flow,
-        alpha = vp_flow
       ),
       angle = 90,
-      # alpha = 0.6,
       size = 1,
       arrow = arrow(length = unit(0.2, "cm")),
       lineend = "butt",
-      colour = "dark blue",
       inherit.aes = TRUE
     ) +
     geom_point(
@@ -257,20 +255,17 @@ vp_flow_arrows_plot <- function(virtual_pollinators_flow_filtered, base_world_ma
       aes(x = reporter_long, y = reporter_lat),
       col = "black"
     ) +
-    # scale_color_distiller(palette = "Spectral", label = comma_format()) +
-    # scale_color_gradient(
-    #   n.breaks = 10,
-    #   low = "light blue",
-    #   high = "dark blue",
-    #   label = comma_format(),
-    #   limits = c(vp_flow_year$vp_flow_min, vp_flow_year$vp_flow_max)
-    # ) +
-    scale_alpha(
+    scale_colour_gradientn(
+      colours = hcl.colors(
+        n = 10,
+        palette = "Zissou1", 
+        alpha = 0.5, 
+        rev = FALSE
+      ), 
+      labels = comma_format(),
       n.breaks = 10,
       breaks = breaks_extended(n = 10),
       guide = "colourbar"
-      label = comma_format(),
-      limits = c(vp_flow_year$vp_flow_min, vp_flow_year$vp_flow_max)
     ) +
     guides(
       colour = guide_colourbar(barheight = 10, order = 1),

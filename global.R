@@ -2,17 +2,29 @@ message("\nLoading global.R file ...\n")
 
 message("\tLoading packages ...\n")
 suppressPackageStartupMessages({
-  library(shiny)
-  library(dplyr)
-  library(ggplot2)
-  library(here)
-  library(usethis)
-  library(qs)
-  library(glue)
-  library(sf)
-  library(scales)
-  library(shinythemes)
-  library(DT)
+  # Web Application Framework for R 
+  library(shiny) # CRAN v1.4.0.2 
+  # A Grammar of Data Manipulation
+  library(dplyr) # CRAN v0.8.5 
+  # Create Elegant Data Visualisations Using the Grammar of Graphics
+  library(ggplot2) # CRAN v3.3.0 
+  # A Simpler Way to Find Your Files
+  library(here) # CRAN v0.1 
+  # Automate Package and Project Setup
+  library(usethis) # CRAN v1.5.1 
+  # Quick Serialization of R Objects
+  library(qs) # CRAN v0.21.2 
+  # Interpreted String Literals
+  library(glue) # CRAN v1.3.2 
+  # Simple Features for R
+  library(sf) # CRAN v0.9-0 
+  # Scale Functions for Visualization
+  library(scales) # CRAN v1.1.0 
+  # Themes for Shiny
+  library(shinythemes) # CRAN v1.1.2 
+  # A Wrapper of the JavaScript Library 'DataTables'
+  library(DT) # CRAN v0.13 
+  # Create Dashboards with 'Shiny'
   library(shinydashboard) # CRAN v0.7.1 
 })
 
@@ -44,3 +56,5 @@ year_select_input <-
   
 colormap_select_input <- 
   c("None", "HDI")
+
+
