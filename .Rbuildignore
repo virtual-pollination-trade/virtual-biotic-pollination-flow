@@ -10,3 +10,5 @@ tests/test-shinyapp-session.R
 tests/test-shinyapp-datatable.R
 tests/testthat/test-distinct_countries_with_item.R
 ^LICENSE\.md$
+^ABOUT\.md$
+.vscode
