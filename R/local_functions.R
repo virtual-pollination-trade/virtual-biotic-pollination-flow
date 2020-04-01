@@ -12,10 +12,25 @@ message("\t\tLoading functions ...\n")
 #'
 read_vp_flow_data <- function() {
 
+  countries_for_the_demo_version <-
+    c(
+      "Brazil",
+      "China",
+      "United States of America",
+      "Japan",
+      "Portugal",
+      "Australia",
+      "South Sudan"
+    )
+
   here::here("inst", "extdata", "virtual-pollinators-flow.qs") %>%
     qread() %>%
     filter(item_code != 0) %>%
-    .[.$reporter_countries != .$partner_countries, ]
+    .[.$reporter_countries != .$partner_countries, ] %>%
+    filter(
+      reporter_countries %in% countries_for_the_demo_version,
+      partner_countries %in% countries_for_the_demo_version
+    )
 
 }
 
