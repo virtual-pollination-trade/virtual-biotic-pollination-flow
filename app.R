@@ -140,7 +140,7 @@ ui <-
 
     tabPanel(
 
-      title = "Shared itens",
+      title = "Shared items",
 
       fluidPage(
 
@@ -149,6 +149,11 @@ ui <-
           width = 10,
 
           align = "center",
+
+          tags$div(class = "header",
+               tags$h3("Items shared by countries"),
+               tags$br()
+      ),
 
           DT::dataTableOutput("shared_item_table")
 
@@ -171,6 +176,9 @@ ui <-
       )
 
     )
+
+    )
+
 server <- function(input, output) {
 
   message("\n\nLoading server ...\n\n")
