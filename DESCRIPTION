@@ -11,6 +11,9 @@ Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.0
 Imports:
+  shiny,
+  knitr,
+  rmarkdown,
   ggplot2,
   dplyr,
   here,
@@ -20,6 +23,7 @@ Imports:
   usethis,
   xpectr,
   shinythemes,
-  DT
+  DT,
+  shinydashboard
 Suggests: 
     testthat (>= 2.1.0)
