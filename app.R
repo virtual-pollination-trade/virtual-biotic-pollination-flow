@@ -19,6 +19,8 @@ ui <-
 
       fluidPage(
 
+      tags$head(includeHTML(("www/google-analytics.html"))),
+
                fluidRow(
 
                  column(
