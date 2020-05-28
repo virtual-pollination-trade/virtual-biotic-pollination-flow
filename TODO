@@ -28,10 +28,11 @@
 ✔ incluir google analytics @done(20-04-06 08:37)
 ✔ adicionar resumo do artigo na aba About @done(20-04-06 08:55)
 ✘ testar https://metrumresearchgroup.github.io/sinew/articles/motivation.html @cancelled(20-05-27 20:16)
+✘ NOTE: os testes estão falhando quando `devtools::check()` porque os dados foram filtrados antes de disponibilizar uma versão para os co-autores. @cancelled(20-05-28 09:14)
+✔ TESTES PASSANDO!: na verdade, os testes estavam falhando porque o conteúdo de sf_data era diferente do inicial; eu precisei atribuir NA ao HDI de alguns países: ver `read_sf_data()` @done(20-05-28 09:17)
 ☐ ?incluir `annotate text` na figura baixada
 ☐ atualizar About após correções dos coautores
 ☐ NOTE: incluí o `{rsconnect}` ao DESCRIPTION
-☐ NOTE: os testes estão falhando quando `devtools::check()` porque os dados foram filtrados antes de disponibilizar uma versão para os co-autores.
 ☐ update DESCRIPTION
     - URL github / issues
     - Title

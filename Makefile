@@ -1,8 +1,8 @@
 .DEFAULT_GOAL := help
 
-.PHONY: help tests
+.PHONY: help tests clean
 
-all: tests check ## run tests and check targets
+all: tests check clean ## run tests, check, and clean targets
 
 run: ## run shiny app locally
 	@echo
@@ -57,6 +57,15 @@ check: ## check package build, documentation, and tests
 	@echo "--------------------------------"
 	@echo
 	Rscript -e "devtools::check()"
+	@echo
+
+clean: ## remove junk things
+	@echo
+	@echo "--------------------------------"
+	@echo "     Removing junk things       "
+	@echo "--------------------------------"
+	@echo
+	rm tests/testthat/Rplots.pdf
 	@echo
 
 help:
