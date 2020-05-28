@@ -41,14 +41,21 @@ show_online: ## open URL of the shiny app
 	xdg-open https://kguidonimartins.shinyapps.io/virtual-biotic-pollination-flow/
 	@echo
 
-tests: ## run tests
+tests: ## test functions and shiny app 
 	@echo
 	@echo "--------------------------------"
 	@echo "        Running tests           "
 	@echo "--------------------------------"
 	@echo
+	@echo "Testing functions"
+	@echo
 	Rscript -e "devtools::test()"
 	@echo
+	# @echo "Testing shiny app"
+	# @echo
+	# Rscript -e "shinytest::installDependencies()"
+	# Rscript -e "shinytest::testApp(appDir = '.', quiet = TRUE, compareImages = FALSE)"
+	# @echo
 
 check: ## check package build, documentation, and tests
 	@echo
