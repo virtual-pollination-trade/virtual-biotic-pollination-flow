@@ -16,7 +16,6 @@
 ✔ incluir um botão para baixar a figura: @done(20-03-22 16:51)
       - https://shiny.rstudio.com/articles/action-buttons.html
       - https://stackoverflow.com/questions/14810409/save-plots-made-in-a-shiny-app
-☐ ?incluir `annotate text` na figura baixada
 ✔ mudar layout para tabpanel @done(20-03-27 16:51)
 ✔ mudar para selectInput para uma linha, tipo: http://shiny.njit.edu/app/07_covid19/ @done (3/27/2020, 4:50:53 PM)
 ✔ listar e aplicar as paletas escolhidas pelo Felipe @done(20-04-01 11:58)
@@ -24,11 +23,18 @@
     ✔ pal_divergingx_type_Zissou+1.png @done(20-04-01 11:58)
     ✘ pal_sequential_type_Lajolla.png @cancelled(20-04-01 11:58)
     ✘ pal_divergingx_type_PuOr.png @cancelled(20-04-01 11:58)
-
 ✔ Incluir paleta de cores @done(20-04-01 11:59)
 ✔ Filtrar países para a versão demo @done(20-04-01 11:59)
-☐ testar https://metrumresearchgroup.github.io/sinew/articles/motivation.html
 ✔ incluir google analytics @done(20-04-06 08:37)
 ✔ adicionar resumo do artigo na aba About @done(20-04-06 08:55)
+✘ testar https://metrumresearchgroup.github.io/sinew/articles/motivation.html @cancelled(20-05-27 20:16)
+☐ ?incluir `annotate text` na figura baixada
 ☐ atualizar About após correções dos coautores
-
+☐ NOTE: incluí o `{rsconnect}` ao DESCRIPTION
+☐ NOTE: os testes estão falhando quando `devtools::check()` porque os dados foram filtrados antes de disponibilizar uma versão para os co-autores.
+☐ update DESCRIPTION
+    - URL github / issues
+    - Title
+    - Description
+☐ Adequar nome do pacote `{vbpflow}` com o nome do repositório no github
+☐ Adequar nome do pacote com a URL do shinyapps 

@@ -4,3 +4,6 @@
 .Ruserdata
 .dropbox
 .vscode
+tags
+.session.vim
+.tmuxinator.yml
