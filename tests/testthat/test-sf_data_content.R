@@ -27,10 +27,10 @@ expect_equal(
   fixed = TRUE)
 expect_equal(
   xpectr::smpl(sf_data[["hdi"]], n = 30),
-  c(0.3674, NA, 0.6422, 0.71827, 0.90793, 0, 0.5956, NA, 0.7268, 0.88153,
-0.5874, 0.733, 0.81747, 0.48915, 0.6128, 0.7118, 0.76727, 0,
-NA, 0.6965, 0.90613, 0.74327, 0.68817, 0, 0.4632, 0.90607, 0.7056,
-0.58918, 0.46327, 0),
+  c(0.3674, NA, 0.6422, 0.71827, 0.90793, 0, 0.5956, NA, 0.7268, 0.88153, 
+    0.5874, 0.733, 0.81747, 0.48915, 0.6128, 0.7118, 0.76727, 0, 
+    NA, 0.6965, 0.90613, 0.74327, 0.68817, 0, 0.4632, 0.90607, 0.7056, 
+    0.58918, 0.46327, 0),
   tolerance = 1e-4)
 # Testing column names
 expect_equal(
@@ -40,7 +40,7 @@ expect_equal(
 # Testing column classes
 expect_equal(
   xpectr::element_classes(sf_data),
-  c("character", "numeric", "sfc_MULTIPOLYGON", "sfc"),
+  c("character", "numeric", "sfc_MULTIPOLYGON"),
   fixed = TRUE)
 # Testing column types
 expect_equal(
