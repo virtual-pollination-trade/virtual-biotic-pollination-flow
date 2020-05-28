@@ -28,6 +28,7 @@ Imports:
   sf,
   shiny,
   shinydashboard,
+  shinytest,
   shinythemes,
   usethis,
   xpectr
