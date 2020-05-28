@@ -1,3 +1,5 @@
+context("Testing `distinct_countries()`")
+
 # df <- read_vp_flow_data()
 
 pkg_data <- 

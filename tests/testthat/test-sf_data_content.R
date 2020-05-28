@@ -1,3 +1,5 @@
+context("Testing sf_data content")
+
 pkg_data <- 
   system.file("extdata", "country-features-with-sf-geometry.qs", package="vbpflow")
 

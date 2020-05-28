@@ -1,3 +1,5 @@
+context("Testing vb_flow_data content: this is not not shipped by `read_vp_flow_data()`")
+
 pkg_data <- 
   system.file("extdata", "virtual-pollinators-flow.qs", package="vbpflow")
 
