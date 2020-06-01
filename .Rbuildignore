@@ -15,3 +15,5 @@ tests/testthat/test-distinct_countries_with_item.R
 .session.vim
 tags
 .tmuxinator.yml
+.travis.yml
+.editorconfig
