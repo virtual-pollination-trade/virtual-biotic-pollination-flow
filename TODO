@@ -38,6 +38,7 @@
     - Title
     - Description
 ☐ Adequar nome do pacote `{vbpflow}` com o nome do repositório no github
-☐ Adequar nome do pacote com a URL do shinyapps 
-☐ Atualizar os tests do shiny no RStudio: as imagens estão incorretas desde a última atualização. 
+☐ Adequar nome do pacote com a URL do shinyapps
+☐ Atualizar os tests do shiny no RStudio: as imagens estão incorretas desde a última atualização.
 ☐ Adicionar Travis CI
+☐ ?Docker
