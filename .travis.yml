@@ -9,21 +9,21 @@ r_packages:
 sudo: false
 
 before_install: |
-  sudo apt-get -y install
+  sudo apt-get -y install \
   build-essential \
-  bwidget \
   libcurl4-gnutls-dev \
+  libxml2-dev \
+  libssl-dev \
   libgdal-dev \
+  bwidget \
   libgdal1-dev \
-  libgeos++-dev \
   libgeos-dev \
+  libgeos++-dev \
   libgsl0-dev \
   libproj-dev \
   libspatialite-dev \
-  libssl-dev \
-  libudunits2-dev
-  libxml2-dev \
   netcdf-bin \
+  libudunits2-dev
 
 cache: packages
 
