@@ -3,6 +3,9 @@ os:
 
 language: r
 
+r_packages:
+  - devtools
+
 sudo: false
 
 before_install:
