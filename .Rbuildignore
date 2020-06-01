@@ -1,9 +1,10 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 .testing.R
+app.R
+setup_shinyapp_account_via_rsconnect_package.R
 global.R
 Makefile
-app.R
 rsconnect/
 www/
 tests/test-shinyapp-session.R
