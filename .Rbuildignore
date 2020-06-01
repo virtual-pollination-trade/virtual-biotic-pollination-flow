@@ -18,3 +18,5 @@ tags
 .tmuxinator.yml
 .travis.yml
 .editorconfig
+Dockerfile
+shiny-server.sh
