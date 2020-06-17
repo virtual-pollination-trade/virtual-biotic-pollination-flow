@@ -20,3 +20,5 @@ tags
 .editorconfig
 Dockerfile
 shiny-server.sh
+^\.pre-commit-config\.yaml$
+^codemeta\.json$
