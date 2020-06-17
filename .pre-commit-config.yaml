@@ -21,6 +21,7 @@ repos:
           (.*/|)WORDLIST|
           (.*/|)\.travis.yml|
           (.*/|)appveyor.yml|
+          (.*/|)codemeta.json|
           (.*/|)\.Rbuildignore|
           (.*/|)\.pre-commit-.*|
           .*\.[rR]|
