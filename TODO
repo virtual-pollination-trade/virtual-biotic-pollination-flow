@@ -43,3 +43,14 @@
 ☐ Adicionar Travis CI
 ☐ Docker: thanks to https://juanitorduz.github.io/dockerize-a-shinyapp/
 ☐ commitar imagem docker
+☐ adequar novo dataset
+    ☐ conferir nomes dos países
+    ☐ confirmar unidade dos valores
+    ☐ reavaliar testes
+    ☐ editar testes
+☐ incluir dockerignore: https://medium.com/hackernoon/do-not-ignore-dockerignore-47f5fb67b448
+    ☐ ignorer arquivos que são não necessários para o app
+☐ rebuild imagem docker
+☐ incluir no travis o deploy do app
+☐ incluir no travis o deploy da imagem docker
+☐ remover coluna com os itens compartilhados entre os países: a única informação que deve ser compartilhada é o valor de flow entre os países.
