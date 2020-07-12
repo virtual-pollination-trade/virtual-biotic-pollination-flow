@@ -31,7 +31,8 @@ repos:
           .*\.rds|
           .*\.Rds|
           .*\.sh|
-          .*\.RData
+          .*\.RData|
+          .*\.TODO
           )$
     -   id: lintr
     -   id: readme-rmd-rendered
