@@ -32,7 +32,7 @@ repos:
           .*\.Rds|
           .*\.sh|
           .*\.RData|
-          .*\.TODO
+          TODO
           )$
     -   id: lintr
     -   id: readme-rmd-rendered
