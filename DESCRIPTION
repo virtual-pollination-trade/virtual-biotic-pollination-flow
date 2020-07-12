@@ -1,36 +1,38 @@
-Package: vbpflow
 Type: Package
+Package: vbpflow
 Title: What the Package Does (Title Case)
 Version: 0.1.0
-Authors@R: c(
-    person("Karlo", "Guidoni Martins", email = "kguidonimartins@gmail.com", 
-    role = c("aut", "cre"), comment = c(ORCID = "0000-0002-8458-8467"))
-    )
+Authors@R: 
+    person(given = "Karlo",
+           family = "Guidoni Martins",
+           role = c("aut", "cre"),
+           email = "kguidonimartins@gmail.com",
+           comment = c(ORCID = "0000-0002-8458-8467"))
 Maintainer: Karlo Guidoni Martins <kguidonimartins@gmail.com>
-URL: https://github.com/kguidonimartins/
-BugReports: https://github.com/kguidonimartins/
 Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
 License: MIT + file LICENSE
-Encoding: UTF-8
-LazyData: true
-RoxygenNote: 7.1.0
+URL: https://github.com/kguidonimartins/
+BugReports: https://github.com/kguidonimartins/
 Imports:
-  dplyr,
-  DT,
-  ggplot2,
-  here,
-  knitr,
-  qs,
-  rmarkdown,
-  rsconnect,
-  scales,
-  sf,
-  shiny,
-  shinydashboard,
-  shinytest,
-  shinythemes,
-  usethis,
-  xpectr
+    dplyr,
+    DT,
+    ggplot2,
+    here,
+    knitr,
+    qs,
+    rmarkdown,
+    rsconnect,
+    scales,
+    sf,
+    shiny,
+    shinydashboard,
+    shinytest,
+    shinythemes,
+    usethis,
+    xpectr
 Suggests: 
     testthat (>= 2.1.0)
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1
