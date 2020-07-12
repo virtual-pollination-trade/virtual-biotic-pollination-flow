@@ -14,10 +14,10 @@
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "4.0.1",
+    "version": "4.0.2",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.0.1 (2020-06-06)",
+  "runtimePlatform": "R version 4.0.2 (2020-06-22)",
   "author": [
     {
       "@type": "Person",
@@ -248,8 +248,7 @@
       "sameAs": "https://CRAN.R-project.org/package=xpectr"
     }
   ],
-  "readme": "https://github.com/kguidonimartins/virtual-biotic-pollination-flow/blob/master/README.md",
-  "fileSize": "21017.225KB",
+  "fileSize": "49827.332KB",
   "contIntegration": "https://travis-ci.com/kguidonimartins/virtual-biotic-pollination-flow",
   "developmentStatus": "https://www.repostatus.org/#active"
 }
