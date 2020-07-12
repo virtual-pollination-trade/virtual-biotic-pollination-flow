@@ -1,4 +1,7 @@
 library(rsconnect)
+library(dotenv)
+
+load_dot_env(file = ".env")
 
 setAccountInfo(
   name = "kguidonimartins",

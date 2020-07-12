@@ -2,7 +2,7 @@
 ^\.Rproj\.user$
 .testing.R
 app.R
-setup_shinyapp_account_via_rsconnect_package.R
+setup_shinyapp.R
 global.R
 Makefile
 rsconnect/
@@ -22,3 +22,4 @@ Dockerfile
 shiny-server.sh
 ^\.pre-commit-config\.yaml$
 ^codemeta\.json$
+.env

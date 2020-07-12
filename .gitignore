@@ -7,3 +7,4 @@
 tags
 .session.vim
 .tmuxinator.yml
+.env
