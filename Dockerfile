@@ -3,7 +3,6 @@ FROM rocker/shiny-verse:latest
 
 # system libraries of general use
 RUN apt-get update && apt-get install -y \
-    sudo \
     build-essential \
     bwidget \
     libcairo2-dev \
