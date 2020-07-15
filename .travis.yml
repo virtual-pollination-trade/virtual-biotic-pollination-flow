@@ -27,7 +27,7 @@ before_install: |
 
 cache: packages
 
-script: make check
+script: make all
 
 matrix:
   include:
@@ -35,4 +35,3 @@ matrix:
 
 after_success:
   - Rscript -e 'devtools::install()'
-

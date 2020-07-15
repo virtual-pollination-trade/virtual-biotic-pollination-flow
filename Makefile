@@ -25,7 +25,7 @@ test_shiny:   ## test shinyapp
 	# Rscript -e "shinytest::testApp(appDir = '.', quiet = TRUE, compareImages = FALSE)"
 
 check:        ## check package build, documentation, and tests
-	Rscript -e "devtools::check()"
+	Rscript -e "devtools::check(cran = FALSE)"
 
 docker_build: ## build the docker image based on Dockerfile
 	docker build -t vbpflow-app .
@@ -40,4 +40,3 @@ clean:        ## remove junk things
 help:         ## show this message
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
 		awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
-
