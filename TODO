@@ -54,3 +54,4 @@
 ☐ incluir no travis o deploy do app
 ☐ incluir no travis o deploy da imagem docker
 ☐ remover coluna com os itens compartilhados entre os países: a única informação que deve ser compartilhada é o valor de flow entre os países.
+☐ PRIORIDADE: Rever limpeza dos dados em ~/Dropbox/dados mapa interativo

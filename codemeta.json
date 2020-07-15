@@ -129,6 +129,18 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "renv",
+      "name": "renv",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=renv"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "rmarkdown",
       "name": "rmarkdown",
       "provider": {
@@ -248,7 +260,7 @@
       "sameAs": "https://CRAN.R-project.org/package=xpectr"
     }
   ],
-  "fileSize": "49827.332KB",
+  "fileSize": "18454.882KB",
   "contIntegration": "https://travis-ci.com/kguidonimartins/virtual-biotic-pollination-flow",
   "developmentStatus": "https://www.repostatus.org/#active"
 }

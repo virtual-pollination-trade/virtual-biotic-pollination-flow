@@ -2,30 +2,30 @@ message("\nLoading global.R file ...\n")
 
 message("\tLoading packages ...\n")
 suppressPackageStartupMessages({
-  # Web Application Framework for R 
-  library(shiny) # CRAN v1.4.0.2 
+  # Web Application Framework for R
+  library(shiny) # CRAN v1.5.0
   # A Grammar of Data Manipulation
-  library(dplyr) # CRAN v0.8.5 
+  library(dplyr) # CRAN v0.8.5
   # Create Elegant Data Visualisations Using the Grammar of Graphics
-  library(ggplot2) # CRAN v3.3.0 
+  library(ggplot2) # CRAN v3.3.2
   # A Simpler Way to Find Your Files
-  library(here) # CRAN v0.1 
+  library(here) # CRAN v0.1
   # Automate Package and Project Setup
-  library(usethis) # CRAN v1.5.1 
+  library(usethis) # CRAN v1.6.1
   # Quick Serialization of R Objects
-  library(qs) # CRAN v0.21.2 
+  library(qs) # CRAN v0.22.1
   # Interpreted String Literals
-  library(glue) # CRAN v1.3.2 
+  library(glue) # CRAN v1.4.0
   # Simple Features for R
-  library(sf) # CRAN v0.9-0 
+  library(sf) # CRAN v0.9-4
   # Scale Functions for Visualization
-  library(scales) # CRAN v1.1.0 
+  library(scales) # CRAN v1.1.1
   # Themes for Shiny
-  library(shinythemes) # CRAN v1.1.2 
+  library(shinythemes) # CRAN v1.1.2
   # A Wrapper of the JavaScript Library 'DataTables'
-  library(DT) # CRAN v0.13 
+  library(DT) # CRAN v0.14
   # Create Dashboards with 'Shiny'
-  library(shinydashboard) # CRAN v0.7.1 
+  library(shinydashboard) # CRAN v0.7.1
 })
 
 message("\tLoading local_functions.R file ...\n")
@@ -46,15 +46,13 @@ origin_select_input <-
   virtual_pollinators_flow %>%
   distinct_input_select_countries(countries_type = reporter_countries)
 
-destination_select_input <- 
+destination_select_input <-
   virtual_pollinators_flow %>%
   distinct_input_select_countries(countries_type = partner_countries)
-  
-year_select_input <- 
+
+year_select_input <-
   virtual_pollinators_flow %>%
   distinct_input_select_years()
-  
-colormap_select_input <- 
+
+colormap_select_input <-
   c("None", "HDI")
-
-
