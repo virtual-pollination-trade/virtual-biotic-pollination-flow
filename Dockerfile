@@ -1,5 +1,5 @@
 # get shiny serves plus tidyverse packages image
-FROM rocker/shiny-verse:latest
+FROM rocker/shiny-verse:3.6.3
 
 # system libraries of general use
 RUN apt-get update && apt-get install -y \
@@ -26,16 +26,20 @@ RUN apt-get update && apt-get install -y \
 # (change it dependeing on the packages you need)
 RUN R -e "pkg <- c('dplyr', 'DT', 'ggplot2', 'here', 'knitr', 'qs', \
            'rmarkdown', 'rsconnect', 'scales', 'sf', 'shiny', \
-           'shinydashboard', 'shinytest', 'shinythemes', \
-           'usethis', 'xpectr', 'testthat'); \
-           install.packages(pkg, repos = 'http://cran.rstudio.com/')"
+           'shinydashboard', 'shinythemes', 'usethis'); \
+           install.packages(pkg, repos = \
+           'http://mran.revolutionanalytics.com/snapshot/2020-05-28/')"
 
 # create folder to store data
-RUN mkdir -p /srv/shiny-server/inst/extdata
+RUN rm -rf /srv/shiny-server/*
+RUN mkdir -p /srv/shiny-server/{inst/extdata,R,www}
 
 # copy the app to the image
-RUN rm -rf /srv/shiny-server/*
-COPY . /srv/shiny-server/
+COPY app.R global.R /srv/shiny-server/
+COPY inst/extdata/* /srv/shiny-server/inst/extdata/
+COPY R/* /srv/shiny-server/R/
+COPY www/google-analytics.html /srv/shiny-server/www/
+COPY ABOUT.md /srv/shiny-server/
 
 # this file needs to be executable.
 # dont forget: `sudo chmod +x shiny-server.sh`
