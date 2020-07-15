@@ -42,8 +42,5 @@ after_success:
   - Rscript -e 'devtools::install()'
   - docker login -u kguidonimartins -p "$DOCKER_PASSWORD"
   - export REPO=kguidonimartins/vbpflow-app
-  - export TAG=`if [ "$TRAVIS_BRANCH" == "trunk" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
   - docker build -t $REPO .
-  - docker tag $REPO:$COMMIT $REPO:$TAG
-  - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
   - docker push $REPO
