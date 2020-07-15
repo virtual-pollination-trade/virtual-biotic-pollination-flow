@@ -1,12 +1,12 @@
-os:
-  - linux
+os: linux
 
-language: r
+language: R
 
-r_packages:
-  - devtools
+r_packages: devtools
 
 sudo: false
+
+services: docker
 
 before_install: |
   sudo apt-get -y install \
@@ -35,3 +35,10 @@ matrix:
 
 after_success:
   - Rscript -e 'devtools::install()'
+  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+  - export DOCKER_IMAGE=kguidonimartins/vbpflow-app
+  - export TAG=`if [ "$TRAVIS_BRANCH" == "trunk" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
+  - docker build -f Dockerfile -t $DOCKER_IMAGE:$COMMIT .
+  - docker tag $DOCKER_IMAGE:$COMMIT $DOCKER_IMAGE:$TAG
+  - docker tag $DOCKER_IMAGE:$COMMIT $DOCKER_IMAGE:travis-$TRAVIS_BUILD_NUMBER
+  - docker push $DOCKER_IMAGE
