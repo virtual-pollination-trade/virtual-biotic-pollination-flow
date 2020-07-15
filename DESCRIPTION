@@ -2,7 +2,7 @@ Type: Package
 Package: vbpflow
 Title: What the Package Does (Title Case)
 Version: 0.1.0
-Authors@R: 
+Authors@R:
     person(given = "Karlo",
            family = "Guidoni Martins",
            role = c("aut", "cre"),
@@ -21,6 +21,7 @@ Imports:
     here,
     knitr,
     qs,
+    renv,
     rmarkdown,
     rsconnect,
     scales,
@@ -31,7 +32,7 @@ Imports:
     shinythemes,
     usethis,
     xpectr
-Suggests: 
+Suggests:
     testthat (>= 2.1.0)
 Encoding: UTF-8
 LazyData: true
