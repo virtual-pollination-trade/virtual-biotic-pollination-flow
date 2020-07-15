@@ -12,4 +12,4 @@ is driving crop land expansion (the main driver of deforestation and biodiversit
 emphasize the need for international coordination to protect pollinators and may help develop global
 economic tools to support conservation policies aiming to protect biodiversity.
 
-##### Check more at: [Silva et al. 2020 - In press](link)
+##### Check more at: [Silva et al. 2020 - Submitted](link)
