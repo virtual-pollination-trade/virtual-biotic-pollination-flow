@@ -1,4 +1,4 @@
-.PHONY: help tests clean
+.PHONY: help test_pkg test_shiny check clean
 .DEFAULT_GOAL := help
 
 DOCKER_IMAGE := kguidonimartins/vbpflow-app
@@ -28,7 +28,7 @@ test_shiny:   ## test shinyapp
 	# Rscript -e "shinytest::testApp(appDir = '.', quiet = TRUE, compareImages = FALSE)"
 
 check:        ## check package build, documentation, and tests
-	Rscript -e "devtools::check(cran = FALSE)"
+	Rscript -e "devtools::check()"
 
 docker_build: ## build the docker image based on Dockerfile
 	docker build -t $(DOCKER_IMAGE) .
@@ -41,7 +41,7 @@ docker_push:  ## push docker image to dockerhub
 	docker login && docker push $(DOCKER_IMAGE)
 
 clean:        ## remove junk things
-	rm tests/testthat/Rplots.pdf
+	if [ -f tests/testthat/Rplots.pdf ]; then rm tests/testthat/Rplots.pdf; fi
 
 help:         ## show this message
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \

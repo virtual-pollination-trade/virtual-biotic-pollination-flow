@@ -9,7 +9,7 @@ services: docker
 
 env:
   global:
-  - DOCKER_IMAGE=kguidonimartins/vbpflow-app
+  - REPO=kguidonimartins/vbpflow-app
 
 warnings_are_errors: false
 
@@ -40,10 +40,10 @@ jobs:
 
 after_success:
   - Rscript -e 'devtools::install()'
-  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
-  - export DOCKER_IMAGE=kguidonimartins/vbpflow-app
+  - docker login -u kguidonimartins -p "$DOCKER_PASSWORD"
+  - export REPO=kguidonimartins/vbpflow-app
   - export TAG=`if [ "$TRAVIS_BRANCH" == "trunk" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
-  - docker build -f Dockerfile -t $DOCKER_IMAGE:$COMMIT .
-  - docker tag $DOCKER_IMAGE:$COMMIT $DOCKER_IMAGE:$TAG
-  - docker tag $DOCKER_IMAGE:$COMMIT $DOCKER_IMAGE:travis-$TRAVIS_BUILD_NUMBER
-  - docker push $DOCKER_IMAGE
+  - docker build -f Dockerfile -t $REPO:$COMMIT .
+  - docker tag $REPO:$COMMIT $REPO:$TAG
+  - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
+  - docker push $REPO
