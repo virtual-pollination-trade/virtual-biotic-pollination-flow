@@ -1,10 +1,8 @@
-os: linux
+dist: xenial
 
-language: R
+language: r
 
 r_packages: devtools
-
-sudo: false
 
 services: docker
 
@@ -29,7 +27,7 @@ cache: packages
 
 script: make all
 
-matrix:
+jobs:
   include:
   - r: release
 
