@@ -11,27 +11,9 @@ message("\t\tLoading functions ...\n")
 #' @export
 #'
 read_vp_flow_data <- function() {
-
-  countries_for_the_demo_version <-
-    c(
-      "Brazil",
-      "China",
-      "United States of America",
-      "Japan",
-      "Portugal",
-      "Australia",
-      "South Sudan"
-    )
-
   here::here("inst", "extdata", "virtual-pollinators-flow.qs") %>%
     qread() %>%
-    filter(item_code != 0) %>%
-    .[.$reporter_countries != .$partner_countries, ] %>%
-    filter(
-      reporter_countries %in% countries_for_the_demo_version,
-      partner_countries %in% countries_for_the_demo_version
-    )
-
+    .[.$reporter_countries != .$partner_countries, ]
 }
 
 #' Read country features data
@@ -44,7 +26,6 @@ read_vp_flow_data <- function() {
 #' @export
 #'
 read_sf_data <- function() {
-
   here::here("inst", "extdata", "country-features-with-sf-geometry.qs") %>%
     qread() %>%
     mutate(
@@ -55,8 +36,6 @@ read_sf_data <- function() {
       ),
       hdi = if_else(hdi == 0, NA_real_, hdi)
     )
-
-
 }
 
 #' Filter distinct report and partner countries
@@ -70,7 +49,6 @@ read_sf_data <- function() {
 #' @export
 #'
 distinct_countries <- function(data) {
-
   data %>%
     group_by(
       reporter_countries,
@@ -89,7 +67,6 @@ distinct_countries <- function(data) {
     filter(vp_flow > 0) %>%
     arrange(vp_flow) %>%
     ungroup()
-
 }
 
 #' Summarise vp_flow data for all years
@@ -105,7 +82,6 @@ distinct_countries <- function(data) {
 #' @export
 #'
 summarise_vp_flow_all_years <- function(data) {
-
   data %>%
     group_by(
       reporter_countries,
@@ -123,7 +99,6 @@ summarise_vp_flow_all_years <- function(data) {
     filter(vp_flow > 0) %>%
     arrange(vp_flow) %>%
     ungroup()
-
 }
 
 #' Summarise minimum and maximum values of vp_flow for the choosed years
@@ -139,9 +114,7 @@ summarise_vp_flow_all_years <- function(data) {
 #' @export
 #'
 min_max_vp_flow_by_input_year <- function(data, year) {
-
   if (year == "All years") {
-
     min_max_vp_flow <-
       data %>%
       filter(vp_flow > 0) %>%
@@ -149,9 +122,7 @@ min_max_vp_flow_by_input_year <- function(data, year) {
         vp_flow_min = min(vp_flow),
         vp_flow_max = max(vp_flow)
       )
-
   } else {
-
     min_max_vp_flow <-
       data %>%
       distinct_countries() %>%
@@ -162,11 +133,9 @@ min_max_vp_flow_by_input_year <- function(data, year) {
       ) %>%
       filter(year %in% {{ year }}) %>%
       ungroup()
-
   }
 
   return(min_max_vp_flow)
-
 }
 
 
@@ -183,19 +152,15 @@ min_max_vp_flow_by_input_year <- function(data, year) {
 #' @export
 #'
 plot_sf_map <- function(data_sf, filled_by) {
-
   if (filled_by == "None") {
-
     map <-
       data_sf %>%
       ggplot() +
       geom_sf() +
       ylim(c(-100, 100))
-
   }
 
   if (filled_by == "HDI") {
-
     hdi_fill_colors <- c("yellow", "orange")
 
     map <-
@@ -212,7 +177,6 @@ plot_sf_map <- function(data_sf, filled_by) {
   }
 
   return(map)
-
 }
 
 #' Create the final plot
@@ -232,7 +196,6 @@ plot_sf_map <- function(data_sf, filled_by) {
 #' @export
 #'
 vp_flow_arrows_plot <- function(virtual_pollinators_flow_filtered, base_world_map, vp_flow_year) {
-
   virtual_pollinators_plot <-
     base_world_map +
     geom_curve(
@@ -258,10 +221,10 @@ vp_flow_arrows_plot <- function(virtual_pollinators_flow_filtered, base_world_ma
     scale_colour_gradientn(
       colours = hcl.colors(
         n = 10,
-        palette = "Zissou1", 
-        alpha = 0.5, 
+        palette = "Zissou1",
+        alpha = 0.5,
         rev = FALSE
-      ), 
+      ),
       labels = comma_format(),
       n.breaks = 10,
       breaks = breaks_extended(n = 10),
@@ -288,7 +251,6 @@ vp_flow_arrows_plot <- function(virtual_pollinators_flow_filtered, base_world_ma
     labs(colour = "Virtual Biotic\nPollination Flow (tons)")
 
   print(virtual_pollinators_plot)
-
 }
 
 #' Informs when countries doesn't have relationships
@@ -300,7 +262,6 @@ vp_flow_arrows_plot <- function(virtual_pollinators_flow_filtered, base_world_ma
 #' @export
 #'
 no_vp_flow <- function() {
-
   plot(
     x = 1:10,
     type = "n",
@@ -318,7 +279,6 @@ no_vp_flow <- function() {
     ),
     cex = 2.5
   )
-
 }
 
 #' Reorder country names and create a vector variable for the input panel
@@ -333,14 +293,13 @@ no_vp_flow <- function() {
 #' @export
 #'
 distinct_input_select_countries <- function(data, countries_type) {
-
   data %>%
     select({{ countries_type }}) %>%
     distinct() %>%
-    pull() %>% {
+    pull() %>%
+    {
       c("All countries", sort(.))
     }
-
 }
 
 #' Reorder years and create a vector variable for the input panel
@@ -354,15 +313,14 @@ distinct_input_select_countries <- function(data, countries_type) {
 #' @export
 #'
 distinct_input_select_years <- function(data) {
-
   data %>%
     select(year) %>%
     arrange(year) %>%
     distinct() %>%
-    pull() %>% {
+    pull() %>%
+    {
       c("All years", .)
     }
-
 }
 
 
@@ -378,8 +336,7 @@ distinct_input_select_years <- function(data) {
 #' @return a filtered tibble
 #' @export
 #'
-distinct_countries_with_item <- function(data_raw, input_origin, input_destination, input_year) {
-
+distinct_countries_for_dt <- function(data_raw, input_origin, input_destination, input_year) {
   df_temp <-
     data_raw %>%
     filter_countries_by_input_select_countries(input_origin, input_destination) %>%
@@ -389,7 +346,6 @@ distinct_countries_with_item <- function(data_raw, input_origin, input_destinati
   unique_destination <- unique(df_temp$partner_countries)
 
   if (input_year == "All years") {
-
     df_result <-
       data_raw %>%
       filter(
@@ -398,8 +354,7 @@ distinct_countries_with_item <- function(data_raw, input_origin, input_destinati
       ) %>%
       group_by(
         reporter_countries,
-        partner_countries,
-        item
+        partner_countries
       ) %>%
       summarise(
         vp_flow = sum(vp_flow),
@@ -411,12 +366,9 @@ distinct_countries_with_item <- function(data_raw, input_origin, input_destinati
       rename(
         "Exporting country" = reporter_countries,
         "Importing country" = partner_countries,
-        Item = item,
         "Virtual Biotic Pollination Flow (tons)" = vp_flow
       )
-
   } else {
-
     df_result <-
       data_raw %>%
       filter(
@@ -427,7 +379,6 @@ distinct_countries_with_item <- function(data_raw, input_origin, input_destinati
       group_by(
         reporter_countries,
         partner_countries,
-        item,
         year
       ) %>%
       summarise(
@@ -440,13 +391,10 @@ distinct_countries_with_item <- function(data_raw, input_origin, input_destinati
       rename(
         "Exporting country" = reporter_countries,
         "Importing country" = partner_countries,
-        Item = item,
         Year = year,
         "Virtual Biotic Pollination Flow (tons)" = vp_flow
       )
-
   }
 
   return(df_result)
-
 }

@@ -7,5 +7,6 @@ context("Testing `no_vp_flow()`")
 xpectr::set_test_seed(42)
 # Testing is NULL
 expect_true(
-  is.null(no_vp_flow()))
+  is.null(no_vp_flow())
+)
 ## Finished testing 'no_vp_flow()'                                          ####

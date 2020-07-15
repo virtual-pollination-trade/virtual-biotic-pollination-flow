@@ -1,10 +1,10 @@
 context("Testing sf_data content")
 
-pkg_data <- 
-  system.file("extdata", "country-features-with-sf-geometry.qs", package="vbpflow")
+pkg_data <-
+  system.file("extdata", "country-features-with-sf-geometry.qs", package = "vbpflow")
 
-sf_data <- 
-  qread(pkg_data) 
+sf_data <-
+  qread(pkg_data)
 
 # gxs_selection("sf_data")
 
@@ -15,47 +15,59 @@ xpectr::set_test_seed(42)
 expect_equal(
   class(sf_data),
   c("sf", "data.frame"),
-  fixed = TRUE)
+  fixed = TRUE
+)
 # Testing column values
 expect_equal(
   xpectr::smpl(sf_data[["admin"]], n = 30),
-  c("Burundi", "Saint Barthelemy", "Bolivia", "Brazil", "Denmark", 
-    "Falkland Islands", "Guatemala", "Indian Ocean Territories", 
-    "Jordan", "Japan", "Kiribati", "Sri Lanka", "Lithuania", "Nigeria", 
-    "Nicaragua", "Peru", "Palau", "French Polynesia", "Western Sahara", 
-    "Suriname", "Sweden", "Seychelles", "Turkmenistan", "Taiwan", 
-    "Uganda", "United States of America", "Saint Vincent and the Grenadines", 
-    "Vanuatu", "Zimbabwe", "Réunion"),
-  fixed = TRUE)
+  c(
+    "Burundi", "Saint Barthelemy", "Bolivia", "Brazil", "Denmark",
+    "Falkland Islands", "Guatemala", "Indian Ocean Territories",
+    "Jordan", "Japan", "Kiribati", "Sri Lanka", "Lithuania", "Nigeria",
+    "Nicaragua", "Peru", "Palau", "French Polynesia", "Western Sahara",
+    "Suriname", "Sweden", "Seychelles", "Turkmenistan", "Taiwan",
+    "Uganda", "United States of America", "Saint Vincent and the Grenadines",
+    "Vanuatu", "Zimbabwe", "Réunion"
+  ),
+  fixed = TRUE
+)
 expect_equal(
   xpectr::smpl(sf_data[["hdi"]], n = 30),
-  c(0.3674, NA, 0.6422, 0.71827, 0.90793, 0, 0.5956, NA, 0.7268, 0.88153, 
-    0.5874, 0.733, 0.81747, 0.48915, 0.6128, 0.7118, 0.76727, 0, 
-    NA, 0.6965, 0.90613, 0.74327, 0.68817, 0, 0.4632, 0.90607, 0.7056, 
-    0.58918, 0.46327, 0),
-  tolerance = 1e-4)
+  c(
+    0.3674, NA, 0.6422, 0.71827, 0.90793, 0, 0.5956, NA, 0.7268, 0.88153,
+    0.5874, 0.733, 0.81747, 0.48915, 0.6128, 0.7118, 0.76727, 0,
+    NA, 0.6965, 0.90613, 0.74327, 0.68817, 0, 0.4632, 0.90607, 0.7056,
+    0.58918, 0.46327, 0
+  ),
+  tolerance = 1e-4
+)
 # Testing column names
 expect_equal(
   names(sf_data),
   c("admin", "hdi", "geometry"),
-  fixed = TRUE)
+  fixed = TRUE
+)
 # Testing column classes
 expect_equal(
   xpectr::element_classes(sf_data),
   c("character", "numeric", "sfc_MULTIPOLYGON"),
-  fixed = TRUE)
+  fixed = TRUE
+)
 # Testing column types
 expect_equal(
   xpectr::element_types(sf_data),
   c("character", "double", "list"),
-  fixed = TRUE)
+  fixed = TRUE
+)
 # Testing dimensions
 expect_equal(
   dim(sf_data),
-  c(251L, 3L))
+  c(251L, 3L)
+)
 # Testing group keys
 expect_equal(
   colnames(dplyr::group_keys(sf_data)),
   character(0),
-  fixed = TRUE)
+  fixed = TRUE
+)
 ## Finished testing 'sf_data'                                               ####

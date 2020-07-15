@@ -11,8 +11,6 @@ globalVariables(
     "year",
     "vp_flow",
     ".",
-    "hdi",
-    "item_code",
-    "item"
+    "hdi"
   )
 )
