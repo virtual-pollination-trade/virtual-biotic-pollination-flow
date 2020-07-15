@@ -36,7 +36,7 @@ matrix:
 after_success:
   - Rscript -e 'devtools::install()'
   - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
-  - export DOCKER_IMAGE=kguidonimartins/vbpflow-app
+  - export DOCKER_IMAGE=$DOCKER_USERNAME/vbpflow-app
   - export TAG=`if [ "$TRAVIS_BRANCH" == "trunk" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
   - docker build -f Dockerfile -t $DOCKER_IMAGE:$COMMIT .
   - docker tag $DOCKER_IMAGE:$COMMIT $DOCKER_IMAGE:$TAG
