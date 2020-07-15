@@ -1,15 +1,18 @@
+.PHONY: help tests clean
 .DEFAULT_GOAL := help
 
-.PHONY: help tests clean
+DOCKER_IMAGE := kguidonimartins/vbpflow-app
 
-all: test_pkg check clean ## run check and clean targets
+all: test_pkg check clean ## run test_pkg, check, and clean targets
 
 run:          ## run shiny app locally
 	xdg-open http://127.0.0.1:8080/
 	Rscript -e "shiny::runApp(appDir = '.', port = 8080, quiet = TRUE)"
 
 deploy_app:   ## deploy the last version of shiny app
+	mv .Rprofile bkp_rprofile
 	Rscript -e "rsconnect::deployApp(appDir = '.', upload = TRUE, launch.browser = TRUE, forceUpdate = TRUE, logLevel = 'verbose', lint = TRUE)"
+	mv bkp_rprofile .Rprofile
 
 show_logs:    ## show the last 200 logs of the website
 	Rscript -e "rsconnect::showLogs(entries = 200)"
@@ -28,11 +31,14 @@ check:        ## check package build, documentation, and tests
 	Rscript -e "devtools::check(cran = FALSE)"
 
 docker_build: ## build the docker image based on Dockerfile
-	docker build -t vbpflow-app .
+	docker build -t $(DOCKER_IMAGE) .
 
 docker_run:   ## run the docker container
 	xdg-open http://127.0.0.1:3838/
-	docker run --rm -p 3838:3838 vbpflow-app
+	docker run --rm -p 3838:3838 $(DOCKER_IMAGE)
+
+docker_push:  ## push docker image to dockerhub
+	docker login && docker push $(DOCKER_IMAGE)
 
 clean:        ## remove junk things
 	rm tests/testthat/Rplots.pdf
