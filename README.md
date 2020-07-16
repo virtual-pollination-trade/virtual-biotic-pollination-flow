@@ -2,3 +2,19 @@
 [![Build Status](https://travis-ci.com/kguidonimartins/virtual-biotic-pollination-flow.svg?token=yxuzigPBpgHFpwAypqgf&branch=master)](https://travis-ci.com/kguidonimartins/virtual-biotic-pollination-flow)
 
 # virtual-biotic-pollination-flow
+
+## Run app in a docker container
+
+Download the image:
+
+```bash
+docker pull kguidonimartins/vbpflow-app
+```
+
+Run the container:
+
+```bash
+docker run --rm -p 3838:3838 kguidonimartins/vbpflow-app
+```
+
+In your preferred browser, navigate to [http://localhost:3838/](http://localhost:3838/)
