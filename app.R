@@ -188,10 +188,10 @@ server <- function(input, output) {
       {
         message("Checking input variables ...\n\n")
 
-        print(input$origin)
-        print(input$destination)
-        print(input$year)
-        print(input$colormap)
+        ui_info("origin: {ui_code(input$origin)}")
+        ui_info("destination: {ui_code(input$destination)}")
+        ui_info("year: {ui_code(input$year)}")
+        ui_info("colormap: {ui_code(input$colormap)}")
 
         message("\n\nFiltering countries in virtual_pollinators_flow...\n\n")
 

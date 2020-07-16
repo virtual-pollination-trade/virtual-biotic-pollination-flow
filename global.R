@@ -26,6 +26,8 @@ suppressPackageStartupMessages({
   library(DT) # CRAN v0.14
   # Create Dashboards with 'Shiny'
   library(shinydashboard) # CRAN v0.7.1
+  # Automate Package and Project Setup
+  library(usethis) # CRAN v1.6.1
 })
 
 message("\tLoading local_functions.R file ...\n")
