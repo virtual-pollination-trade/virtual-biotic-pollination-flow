@@ -4,8 +4,7 @@ pkg_data <-
   system.file("extdata", "virtual-pollinators-flow.qs", package = "vbpflow")
 
 df <-
-  qread(pkg_data) %>%
-  .[.$reporter_countries != .$partner_countries, ]
+  qread(pkg_data)
 
 # xpectr::gxs_selection("filter_year_by_input_select_year(df, 2001)")
 

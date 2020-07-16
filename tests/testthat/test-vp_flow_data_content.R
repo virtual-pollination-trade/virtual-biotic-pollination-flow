@@ -4,8 +4,7 @@ pkg_data <-
   system.file("extdata", "virtual-pollinators-flow.qs", package = "vbpflow")
 
 vp_flow_data <-
-  qread(pkg_data) %>%
-  .[.$reporter_countries != .$partner_countries, ]
+  qread(pkg_data)
 
 # xpectr::gxs_selection("vp_flow_data")
 
@@ -15,7 +14,7 @@ xpectr::set_test_seed(42)
 # Testing class
 expect_equal(
   class(vp_flow_data),
-  c("spec_tbl_df", "tbl_df", "tbl", "data.frame"),
+  c("tbl_df", "tbl", "data.frame"),
   fixed = TRUE
 )
 # Testing column values
@@ -23,9 +22,9 @@ expect_equal(
   xpectr::smpl(vp_flow_data[["reporter_countries"]], n = 30),
   c(
     "Belgium", "Bulgaria", "Canada", "Canada", "Estonia", "France",
-    "Hungary", "Israel", "Italy", "Italy", "Italy", "Latvia", "Lebanon",
-    "Mexico", "New Zealand", "Oman", "Portugal", "Russia", "Singapore",
-    "Sri Lanka", "Sweden", "Ukraine", "Ukraine", "United Arab Emirates",
+    "Hungary", "Israel", "Italy", "Italy", "Italy", "Kyrgyzstan",
+    "Latvia", "Mexico", "New Zealand", "Oman", "Portugal", "Russia",
+    "Singapore", "Sri Lanka", "Sweden", "Ukraine", "Ukraine", "United Arab Emirates",
     "United Kingdom", "United Kingdom", "United Republic of Tanzania",
     "United States of America", "United States of America", "United States of America"
   ),
@@ -34,33 +33,32 @@ expect_equal(
 expect_equal(
   xpectr::smpl(vp_flow_data[["partner_countries"]], n = 30),
   c(
-    "Germany", "Finland", "Venezuela", "Australia", "Lithuania", "Sweden",
-    "Austria", "United Kingdom", "Croatia", "Denmark", "Slovakia",
-    "Russia", "Qatar", "Ecuador", "Netherlands", "United Arab Emirates",
-    "Netherlands", "Democratic Republic of the Congo", "Brunei",
-    "United Kingdom", "Finland", "Switzerland", "Russia", "Djibouti",
-    "Romania", "Czech Republic", "Germany", "Spain", "Belgium",
-    "Canada"
+    "Czech Republic", "Belgium", "Malaysia", "Thailand", "Finland",
+    "Japan", "Croatia", "Netherlands", "China", "Bosnia and Herzegovina",
+    "Estonia", "Kazakhstan", "Ireland", "Singapore", "Australia",
+    "Jordan", "Saudi Arabia", "Armenia", "Japan", "Mauritius", "Italy",
+    "Turkey", "Latvia", "Bangladesh", "Austria", "Ireland", "India",
+    "Uzbekistan", "Sri Lanka", "Bahrain"
   ),
   fixed = TRUE
 )
 expect_equal(
   xpectr::smpl(vp_flow_data[["year"]], n = 30),
   c(
-    2010, 2006, 2008, 2012, 2006, 2008, 2013, 2009, 2003, 2005, 2010,
-    2005, 2002, 2005, 2006, 2011, 2015, 2010, 2002, 2001, 2003,
-    2007, 2010, 2008, 2013, 2014, 2002, 2001, 2012, 2015
+    2010, 2004, 2007, 2011, 2002, 2008, 2011, 2007, 2003, 2005, 2009,
+    2007, 2015, 2001, 2004, 2004, 2015, 2008, 2001, 2001, 2003,
+    2008, 2011, 2014, 2013, 2014, 2002, 2001, 2012, 2015
   ),
   tolerance = 1e-4
 )
 expect_equal(
   xpectr::smpl(vp_flow_data[["vp_flow"]], n = 30),
   c(
-    9.95124, 1173.83767, 4.86705, 1.2282, 170.30212, 0.13359, 0.26217,
-    0.1803, 430.39801, 52.00103, 332.10099, 0.62127, 55.62202, 0.16064,
-    135.64942, 62.90973, 1.42481, 16.75475, 0.33631, 0.28028, 20.52224,
-    170.75182, 4.07794, 0.06142, 0.25195, 1.76364, 0.06636, 11.15386,
-    3936.36072, 2562.65283
+    3.46403, 8.6929, 0.89591, 298.02233, 0.23644, 0.53436, 1.33311,
+    1589.43411, 1.86089, 436.36968, 205.43444, 211.3227, 0.22825,
+    7.44056, 42.06786, 0.37836, 336.59893, 17.28454, 42.71998, 213.41512,
+    10.36452, 0.10228, 106.80759, 0.02307, 41.41943, 47.55081, 30.07488,
+    8464.85804, 0.11613, 2.61789
   ),
   tolerance = 1e-4
 )
@@ -68,7 +66,7 @@ expect_equal(
   xpectr::smpl(vp_flow_data[["reporter_long"]], n = 30),
   c(
     4.64065, 25.21553, -98.30777, -98.30777, 25.54249, -2.76173, 19.39559,
-    35.00445, 12.07001, 12.07001, 12.07001, 24.91236, 35.88016,
+    35.00445, 12.07001, 12.07001, 12.07001, 74.54166, 24.91236,
     -102.52345, 171.48492, 56.09166, -8.50104, 96.68656, 103.81726,
     80.70108, 16.74558, 31.38326, 31.38326, 54.30017, -2.86563,
     -2.86563, 34.8131, -112.46167, -112.46167, -112.46167
@@ -79,7 +77,7 @@ expect_equal(
   xpectr::smpl(vp_flow_data[["reporter_lat"]], n = 30),
   c(
     50.63982, 42.7689, 61.36206, 61.36206, 58.67193, 42.17344, 47.16278,
-    31.4611, 42.79663, 42.79663, 42.79663, 56.85085, 33.92307, 23.94754,
+    31.4611, 42.79663, 42.79663, 42.79663, 41.46222, 56.85085, 23.94754,
     -41.81114, 20.60515, 39.59551, 61.98052, 1.35876, 7.61267, 62.77967,
     48.99657, 48.99657, 23.90528, 54.12387, 54.12387, -6.27565,
     45.67955, 45.67955, 45.67955
@@ -89,22 +87,22 @@ expect_equal(
 expect_equal(
   xpectr::smpl(vp_flow_data[["partner_long"]], n = 30),
   c(
-    10.38578, 26.27467, -66.18184, 134.491, 23.88719, 16.74558, 14.12648,
-    -2.86563, 16.40413, 10.02801, 19.47905, 96.68656, 51.1848, -78.75202,
-    5.28145, 54.30017, 5.28145, 23.64396, 114.72203, -2.86563, 26.27467,
-    8.20867, 96.68656, 42.56068, 24.97293, 15.3124, 10.38578, -3.64755,
-    4.64065, -98.30777
+    15.3124, 4.64065, 109.69762, 101.00288, 26.27467, 138.0309, 16.40413,
+    5.28145, 103.81907, 17.76877, 25.54249, 67.29149, -8.13794,
+    103.81726, 134.491, 36.77136, 44.53686, 44.92993, 138.0309,
+    57.57121, 12.07001, 35.16895, 24.91236, 90.23813, 14.12648,
+    -8.13794, 79.61198, 63.14002, 80.70108, 50.54197
   ),
   tolerance = 1e-4
 )
 expect_equal(
   xpectr::smpl(vp_flow_data[["partner_lat"]], n = 30),
   c(
-    51.10698, 64.49885, 7.12422, -25.73289, 55.32611, 62.77967, 47.58549,
-    54.12387, 45.08048, 55.98125, 48.70548, 61.98052, 25.30601,
-    -1.42382, 52.10079, 23.90528, 52.10079, -2.87746, 4.51969, 54.12387,
-    64.49885, 46.79786, 61.98052, 11.74872, 45.85243, 49.73341,
-    51.10698, 40.24449, 50.63982, 61.36206
+    49.73341, 50.63982, 3.78987, 15.11816, 64.49885, 37.5923, 45.08048,
+    52.10079, 36.56177, 44.1745, 58.67193, 48.15688, 53.17545, 1.35876,
+    -25.73289, 31.24579, 24.12246, 40.28953, 37.5923, -20.27769,
+    42.79663, 39.0616, 56.85085, 23.86731, 47.58549, 53.17545, 22.88578,
+    41.75554, 7.61267, 26.04205
   ),
   tolerance = 1e-4
 )
@@ -112,7 +110,7 @@ expect_equal(
   xpectr::smpl(vp_flow_data[["reporter_hdi"]], n = 30),
   c(
     0.8964, 0.76613, 0.8976, 0.8976, 0.8356, 0.87527, 0.81293, 0.8806,
-    0.86293, 0.86293, 0.86293, 0.8072, 0.74864, 0.7386, 0.89507,
+    0.86293, 0.86293, 0.86293, 0.63167, 0.8072, 0.7386, 0.89507,
     0.773, 0.81427, 0.7706, 0.8828, 0.733, 0.90613, 0.72333, 0.72333,
     0.83293, 0.89533, 0.89533, 0.47053, 0.90607, 0.90607, 0.90607
   ),
@@ -121,10 +119,10 @@ expect_equal(
 expect_equal(
   xpectr::smpl(vp_flow_data[["partner_hdi"]], n = 30),
   c(
-    0.91167, 0.8966, 0.7386, 0.91773, 0.81747, 0.90613, 0.8758, 0.89533,
-    0.79773, 0.90793, 0.81347, 0.7706, 0.8332, 0.70767, 0.90367,
-    0.83293, 0.90367, 0.3886, 0.8402, 0.89533, 0.8966, 0.9182, 0.7706,
-    0.42793, 0.77413, 0.8488, 0.91167, 0.85567, 0.8964, 0.8976
+    0.8488, 0.8964, 0.7572, 0.70667, 0.8966, 0.88153, 0.79773, 0.90367,
+    0.679, 0.7152, 0.8356, 0.75687, 0.8994, 0.8828, 0.91773, 0.7268,
+    0.79653, 0.7112, 0.88153, 0.73427, 0.86293, 0.72027, 0.8072,
+    0.5308, 0.8758, 0.8994, 0.5626, 0.65147, 0.733, 0.79873
   ),
   tolerance = 1e-4
 )
@@ -159,7 +157,7 @@ expect_equal(
 # Testing dimensions
 expect_equal(
   dim(vp_flow_data),
-  c(563050L, 10L)
+  c(556627L, 10L)
 )
 # Testing group keys
 expect_equal(
