@@ -12,8 +12,7 @@ message("\t\tLoading functions ...\n")
 #'
 read_vp_flow_data <- function() {
   here::here("inst", "extdata", "virtual-pollinators-flow.qs") %>%
-    qread() %>%
-    .[.$reporter_countries != .$partner_countries, ]
+    qread()
 }
 
 #' Read country features data
