@@ -40,7 +40,7 @@ ui <-
             wellPanel(
               selectInput(
                 inputId = "destination",
-                label = "Import country",
+                label = "Importing country",
                 choices = destination_select_input,
                 multiple = TRUE,
                 selected = "All countries",
