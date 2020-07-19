@@ -18,6 +18,7 @@ Imports:
     dplyr,
     DT,
     ggplot2,
+    ggtext,
     here,
     knitr,
     qs,

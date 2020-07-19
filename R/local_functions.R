@@ -189,6 +189,7 @@ plot_sf_map <- function(data_sf, filled_by) {
 #' @import ggplot2
 #' @import scales
 #' @importFrom grDevices hcl.colors
+#' @importFrom ggtext element_markdown
 #'
 #' @return a ggplot object: the final plot
 #'
@@ -198,7 +199,8 @@ vp_flow_arrows_plot <- function(virtual_pollinators_flow_filtered, base_world_ma
   virtual_pollinators_plot <-
     base_world_map +
     geom_curve(
-      data = virtual_pollinators_flow_filtered,
+      data = virtual_pollinators_flow_filtered %>%
+        mutate(vp_flow = log(vp_flow + 1)),
       aes(
         x = reporter_long,
         y = reporter_lat,
@@ -220,7 +222,7 @@ vp_flow_arrows_plot <- function(virtual_pollinators_flow_filtered, base_world_ma
     scale_colour_gradientn(
       colours = hcl.colors(
         n = 10,
-        palette = "Zissou1",
+        palette = "RdYlBu",
         alpha = 0.5,
         rev = FALSE
       ),
@@ -241,13 +243,24 @@ vp_flow_arrows_plot <- function(virtual_pollinators_flow_filtered, base_world_ma
       legend.position = "right",
       legend.direction = "vertical",
       legend.justification = "center",
-      legend.title = element_text(size = 20),
+      legend.title = element_markdown(),
       legend.text = element_text(size = 16),
       legend.spacing = unit(0.5, "cm"),
       legend.spacing.y = unit(0.5, "cm"),
       legend.margin = margin(1, 1, 1, 1)
     ) +
-    labs(colour = "Virtual Biotic\nPollination Flow (tons)")
+    labs(
+      color = "<span style='font-size:20pt'>Virtual Biotic</span><br>
+               <span style='font-size:20pt'>Pollination Flow</span><br>
+               <span style='font-size:12pt'> (color scheme applied to</span><br>
+               <span style='font-size:12pt'>logarithmized values*)</span>"
+    ) +
+    annotate(
+      geom = "text",
+      x = 160,
+      y = -100,
+      label = "* Check original values in the Data tab"
+    )
 
   print(virtual_pollinators_plot)
 }

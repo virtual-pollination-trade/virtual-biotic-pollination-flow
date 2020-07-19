@@ -28,6 +28,8 @@ suppressPackageStartupMessages({
   library(shinydashboard) # CRAN v0.7.1
   # Automate Package and Project Setup
   library(usethis) # CRAN v1.6.1
+  # Improved text rendering support for ggplot2
+  library(ggtext) # CRAN v0.1.0
 })
 
 message("\tLoading local_functions.R file ...\n")
