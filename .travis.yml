@@ -42,5 +42,4 @@ after_success:
   - Rscript -e 'devtools::install()'
   - docker login -u kguidonimartins -p "$DOCKER_PASSWORD"
   - export REPO=kguidonimartins/vbpflow-app
-  - docker build -t $REPO .
-  - docker push $REPO
+  - if [ $TRAVIS_BRANCH == "trunk" ]; then docker build -t $REPO .; docker push $REPO; fi
