@@ -253,7 +253,8 @@ vp_flow_arrows_plot <- function(virtual_pollinators_flow_filtered, base_world_ma
       color = "<span style='font-size:20pt'>Virtual Biotic</span><br>
                <span style='font-size:20pt'>Pollination Flow</span><br>
                <span style='font-size:12pt'> (color scheme applied to</span><br>
-               <span style='font-size:12pt'>logarithmized values*)</span>"
+               <span style='font-size:12pt'>logarithmized values*)</span>",
+      caption = "Original data on international market was obtained from www.fao.org/faostat/en/#data/TM"
     ) +
     annotate(
       geom = "text",

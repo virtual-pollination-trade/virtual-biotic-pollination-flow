@@ -93,6 +93,8 @@ ui <-
       ),
 
       fixedRow(
+
+        tags$br(),
         align = "right",
 
         column(
@@ -127,7 +129,13 @@ ui <-
             tags$br()
           ),
 
-          # DT::dataTableOutput("dt_table")
+          # DT::dataTableOutput("dt_table"),
+
+          tags$div(
+            class = "footer",
+            tags$h6("Original data on international market was obtained from www.fao.org/faostat/en/#data/TM"),
+            tags$br()
+          )
         )
       )
     ),

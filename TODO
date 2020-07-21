@@ -30,28 +30,28 @@
 ✘ testar https://metrumresearchgroup.github.io/sinew/articles/motivation.html @cancelled(20-05-27 20:16)
 ✘ NOTE: os testes estão falhando quando `devtools::check()` porque os dados foram filtrados antes de disponibilizar uma versão para os co-autores. @cancelled(20-05-28 09:14)
 ✔ TESTES PASSANDO!: na verdade, os testes estavam falhando porque o conteúdo de sf_data era diferente do inicial; eu precisei atribuir NA ao HDI de alguns países: ver `read_sf_data()` @done(20-05-28 09:17)
+✔ NOTE: incluí o `{rsconnect}` ao DESCRIPTION
+✘ Adequar nome do pacote com a URL do shinyapps
+✘ Atualizar os tests do shiny no RStudio: as imagens estão incorretas desde a última atualização.
+✔ Adicionar Travis CI
+✔ Docker: thanks to https://juanitorduz.github.io/dockerize-a-shinyapp/
+✔ commitar imagem docker
+✔ adequar novo dataset
+    ✔ conferir nomes dos países
+    ✔ confirmar unidade dos valores
+    ✔ reavaliar testes
+    ✔ editar testes
+✘ incluir dockerignore: https://medium.com/hackernoon/do-not-ignore-dockerignore-47f5fb67b448
+    ✘ ignorer arquivos que são não necessários para o app
+✔ rebuild imagem docker
+✘ incluir no travis o deploy do app
+✔ incluir no travis o deploy da imagem docker
+✔ remover coluna com os itens compartilhados entre os países: a única informação que deve ser compartilhada é o valor de flow entre os países.
+✔ PRIORIDADE: Rever limpeza dos dados em ~/Dropbox/dados mapa interativo
 ☐ ?incluir `annotate text` na figura baixada
 ☐ atualizar About após correções dos coautores
-☐ NOTE: incluí o `{rsconnect}` ao DESCRIPTION
 ☐ update DESCRIPTION
     - URL github / issues
     - Title
     - Description
 ☐ Adequar nome do pacote `{vbpflow}` com o nome do repositório no github
-☐ Adequar nome do pacote com a URL do shinyapps
-☐ Atualizar os tests do shiny no RStudio: as imagens estão incorretas desde a última atualização.
-☐ Adicionar Travis CI
-☐ Docker: thanks to https://juanitorduz.github.io/dockerize-a-shinyapp/
-☐ commitar imagem docker
-☐ adequar novo dataset
-    ☐ conferir nomes dos países
-    ☐ confirmar unidade dos valores
-    ☐ reavaliar testes
-    ☐ editar testes
-☐ incluir dockerignore: https://medium.com/hackernoon/do-not-ignore-dockerignore-47f5fb67b448
-    ☐ ignorer arquivos que são não necessários para o app
-☐ rebuild imagem docker
-☐ incluir no travis o deploy do app
-☐ incluir no travis o deploy da imagem docker
-☐ remover coluna com os itens compartilhados entre os países: a única informação que deve ser compartilhada é o valor de flow entre os países.
-☐ PRIORIDADE: Rever limpeza dos dados em ~/Dropbox/dados mapa interativo
