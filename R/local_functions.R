@@ -263,6 +263,23 @@ vp_flow_arrows_plot <- function(virtual_pollinators_flow_filtered, base_world_ma
       label = "* Check original values in the Data tab"
     )
 
+  if (nrow(virtual_pollinators_flow_filtered) == 1) {
+    virtual_pollinators_plot <-
+      virtual_pollinators_plot +
+      scale_colour_gradientn(
+        colours = hcl.colors(
+          n = 2,
+          palette = "RdYlBu",
+          alpha = 0.5,
+          rev = FALSE
+        ),
+        labels = comma_format(),
+        n.breaks = 1,
+        breaks = breaks_extended(n = 1),
+        guide = "colourbar"
+      )
+  }
+
   print(virtual_pollinators_plot)
 }
 
