@@ -246,9 +246,10 @@ server <- function(input, output) {
       ggsave(
         filename = file,
         plot = plotInput(),
-        width = 50,
-        height = 40,
-        units = "cm"
+        width = 30,
+        height = 20,
+        units = "cm",
+        dpi = "retina"
       )
 
       cat("\n")
