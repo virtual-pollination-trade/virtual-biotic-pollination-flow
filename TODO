@@ -49,7 +49,7 @@
 ✔ remover coluna com os itens compartilhados entre os países: a única informação que deve ser compartilhada é o valor de flow entre os países.
 ✔ PRIORIDADE: Rever limpeza dos dados em ~/Dropbox/dados mapa interativo
 ☐ ?incluir `annotate text` na figura baixada
-☐ atualizar About após correções dos coautores
+✘ atualizar About após correções dos coautores
 ☐ update DESCRIPTION
     - URL github / issues
     - Title
