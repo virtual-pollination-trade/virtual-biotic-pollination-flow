@@ -13,3 +13,19 @@ new global socio-economic policies to meet the interconnected challenges of biod
 ecosystem health, and social justice.
 
 ##### Check more at: [Silva et al. 2020 - Submitted](link)
+
+---
+
+<div style="text-align: left;">
+
+<span style="font-weight: bold; font-size: 15px;">Contact</span> <br>
+
+ <dl>
+  <dt>Information on flow map tool:</dt>
+    <dd>- Karlo Guidoni-Martins (kguidonimartins [at] gmail [dot] com)</dd>
+  <dt>Information on dataset and statistical analysis:</dt>
+    <dd>- Luísa G. Carvalheiro (lgcarvalheiro [at] gmail [dot] com)</dd>
+    <dd>- Felipe Deodato da Silva e Silva (felipe.silva [at] bag.ifmt.edu [dot] br)</dd>
+</dl>
+
+</div>
