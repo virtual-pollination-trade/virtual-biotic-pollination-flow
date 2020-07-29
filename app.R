@@ -28,7 +28,7 @@ ui <-
                 label = "Exporting country",
                 choices = origin_select_input,
                 multiple = TRUE,
-                selected = "United States of America",
+                selected = "Brazil",
                 selectize = TRUE
               )
             )
