@@ -147,7 +147,7 @@ ui <-
 
       shinydashboard::box(
         align = "center",
-        width = 4,
+        width = 5,
         shiny::includeMarkdown("ABOUT.md")
       )
     )
