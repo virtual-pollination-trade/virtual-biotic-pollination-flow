@@ -10,9 +10,9 @@ run:          ## run shiny app locally
 	Rscript -e "shiny::runApp(appDir = '.', port = 8080, quiet = TRUE)"
 
 deploy_app:   ## deploy the last version of shiny app
-	mv .Rprofile bkp_rprofile
+	if [ -f .Rprofile ]; then mv .Rprofile bkp_rprofile; fi
 	Rscript -e "rsconnect::deployApp(appDir = '.', upload = TRUE, launch.browser = TRUE, forceUpdate = TRUE, logLevel = 'verbose', lint = TRUE)"
-	mv bkp_rprofile .Rprofile
+	if [ -f bkp_rprofile ]; then mv bkp_rprofile .Rprofile; fi
 
 show_logs:    ## show the last 200 logs of the website
 	Rscript -e "rsconnect::showLogs(entries = 200)"
