@@ -1,34 +1,37 @@
 .PHONY: help test_pkg test_shiny check clean
+
 .DEFAULT_GOAL := help
 
 DOCKER_IMAGE := kguidonimartins/vbpflow-app
+
+R := Rscript -e
 
 all: test_pkg check clean ## run test_pkg, check, and clean targets
 
 run:          ## run shiny app locally
 	xdg-open http://127.0.0.1:8080/
-	Rscript -e "shiny::runApp(appDir = '.', port = 8080, quiet = TRUE)"
+	$(R) "shiny::runApp(appDir = '.', port = 8080, quiet = TRUE)"
 
 deploy_app:   ## deploy the last version of shiny app
 	if [ -f .Rprofile ]; then mv .Rprofile bkp_rprofile; fi
-	Rscript -e "rsconnect::deployApp(appDir = '.', upload = TRUE, launch.browser = TRUE, forceUpdate = TRUE, logLevel = 'verbose', lint = TRUE)"
+	$(R) "rsconnect::deployApp(appDir = '.', upload = TRUE, launch.browser = TRUE, forceUpdate = TRUE, logLevel = 'verbose', lint = TRUE)"
 	if [ -f bkp_rprofile ]; then mv bkp_rprofile .Rprofile; fi
 
 show_logs:    ## show the last 200 logs of the website
-	Rscript -e "rsconnect::showLogs(entries = 200)"
+	$(R) "rsconnect::showLogs(entries = 200)"
 
 show_online:  ## open URL of the shiny app
 	xdg-open https://kguidonimartins.shinyapps.io/virtual-biotic-pollination-flow/
 
 test_pkg:     ## test functions and shiny app
-	Rscript -e "devtools::test()"
+	$(R) "devtools::test()"
 
 test_shiny:   ## test shinyapp
-	# Rscript -e "shinytest::installDependencies()"
-	# Rscript -e "shinytest::testApp(appDir = '.', quiet = TRUE, compareImages = FALSE)"
+	# $(R) "shinytest::installDependencies()"
+	# $(R) "shinytest::testApp(appDir = '.', quiet = TRUE, compareImages = FALSE)"
 
 check:        ## check package build, documentation, and tests
-	Rscript -e "devtools::check()"
+	$(R) "devtools::check()"
 
 docker_build: ## build the docker image based on Dockerfile
 	docker build -t $(DOCKER_IMAGE) .
