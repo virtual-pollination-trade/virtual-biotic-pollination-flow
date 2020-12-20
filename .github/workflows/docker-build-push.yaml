@@ -35,3 +35,10 @@ jobs:
           tags: kguidonimartins/vbpflow-app:latest
           secrets: |
           GIT_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
+      -
+        name: Update Docker Hub description
+        uses: peter-evans/dockerhub-description@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          repository: kguidonimartins/vbpflow-app
