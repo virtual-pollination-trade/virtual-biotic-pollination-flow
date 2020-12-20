@@ -34,4 +34,4 @@ jobs:
           push: true
           tags: kguidonimartins/vbpflow-app:latest
           secrets: |
-          GIT_AUTH_TOKEN=${{ secrets.GH_TOKEN }}
+          GIT_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
