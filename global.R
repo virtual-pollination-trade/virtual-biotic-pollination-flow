@@ -32,11 +32,11 @@ suppressPackageStartupMessages({
   library(ggtext) # CRAN v0.1.0
 })
 
-message("\tLoading local_functions.R file ...\n")
-source(here("R", "local_functions.R"))
+message("\tLoading functions...\n")
 
-message("\tLoading modules.R file ...\n")
-source(here("R", "modules.R"))
+for (func in list.files(path = "R", full.names = TRUE)) {
+  source(func)
+}
 
 message("\tLoading data ...\n")
 virtual_pollinators_flow <-
