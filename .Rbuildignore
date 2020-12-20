@@ -25,3 +25,4 @@ shiny-server.sh
 ^\.pre-commit-config\.yaml$
 ^codemeta\.json$
 .env
+^\.github$
