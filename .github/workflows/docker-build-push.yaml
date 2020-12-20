@@ -1,5 +1,5 @@
 # Based on: https://github.com/marketplace/actions/build-and-push-docker-images#path-context
-name: Build and push docker image
+name: docker-build-push
 
 on:
   push:
