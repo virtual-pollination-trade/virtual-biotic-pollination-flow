@@ -180,10 +180,7 @@ server <- function(input, output) {
     make_plot_by_input_colormap(
       data_filtered = data_filtered,
       data_sf = data_sf,
-      data_year = data_year,
-      input_colormap = input$colormap,
-      input_origin = input$origin,
-      input_destination = input$destination
+      input_colormap = input$colormap
     )
   })
 

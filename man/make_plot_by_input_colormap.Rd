@@ -4,27 +4,14 @@
 \alias{make_plot_by_input_colormap}
 \title{High-order function to plot the final maps}
 \usage{
-make_plot_by_input_colormap(
-  data_filtered,
-  data_sf,
-  data_year,
-  input_colormap,
-  input_origin,
-  input_destination
-)
+make_plot_by_input_colormap(data_filtered, data_sf, input_colormap)
 }
 \arguments{
 \item{data_filtered}{prefiltered tibble}
 
 \item{data_sf}{sf data}
 
-\item{data_year}{prefiltered tibble with min and max vp_flow values}
-
 \item{input_colormap}{input colormap}
-
-\item{input_origin}{input reporter_countries}
-
-\item{input_destination}{input partner_countries}
 }
 \value{
 a map

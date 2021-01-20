@@ -2,15 +2,12 @@
 #'
 #' @param data_filtered prefiltered tibble
 #' @param data_sf sf data
-#' @param data_year prefiltered tibble with min and max vp_flow values
 #' @param input_colormap input colormap
-#' @param input_origin input reporter_countries
-#' @param input_destination input partner_countries
 #'
 #' @return a map
 #' @export
 #'
-make_plot_by_input_colormap <- function(data_filtered, data_sf, data_year, input_colormap, input_origin, input_destination) {
+make_plot_by_input_colormap <- function(data_filtered, data_sf, input_colormap) {
 
     if (input_colormap == "None") {
 
@@ -30,8 +27,7 @@ make_plot_by_input_colormap <- function(data_filtered, data_sf, data_year, input
 
       vp_flow_arrows_plot(
         data_filtered,
-        base_world_map,
-        data_year
+        base_world_map
       )
 
     } else {

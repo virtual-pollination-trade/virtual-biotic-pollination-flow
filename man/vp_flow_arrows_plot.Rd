@@ -4,11 +4,7 @@
 \alias{vp_flow_arrows_plot}
 \title{Create the final plot}
 \usage{
-vp_flow_arrows_plot(
-  virtual_pollinators_flow_filtered,
-  base_world_map,
-  vp_flow_year
-)
+vp_flow_arrows_plot(virtual_pollinators_flow_filtered, base_world_map)
 }
 \arguments{
 \item{virtual_pollinators_flow_filtered}{the filtered data which already
@@ -16,8 +12,6 @@ passed by `distinct_countries()` and by `summarise_vp_flow_all_years()`,
 if choosed in the input panel}
 
 \item{base_world_map}{the sf object created by `plot_sf_map()`}
-
-\item{vp_flow_year}{the filtered data created by `min_max_vp_flow_by_input_year()`}
 }
 \value{
 a ggplot object: the final plot
