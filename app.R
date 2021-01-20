@@ -124,12 +124,11 @@ ui <-
 
           tags$div(
             class = "header",
-            # tags$h3("Items shared by countries"),
-            tags$h3("Data will be available soon."),
+            tags$h3("Virtual biotic pollination flow among countries"),
             tags$br()
           ),
 
-          # DT::dataTableOutput("dt_table"),
+          DT::dataTableOutput("dt_table"),
 
           tags$div(
             class = "footer",
