@@ -26,10 +26,6 @@ show_online:  ## open URL of the shiny app
 test_pkg:     ## test functions and shiny app
 	$(R) "devtools::test()"
 
-test_shiny:   ## test shinyapp
-	# $(R) "shinytest::installDependencies()"
-	# $(R) "shinytest::testApp(appDir = '.', quiet = TRUE, compareImages = FALSE)"
-
 check:        ## check package build, documentation, and tests
 	$(R) "devtools::check()"
 

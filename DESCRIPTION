@@ -9,11 +9,12 @@ Authors@R:
            email = "kguidonimartins@gmail.com",
            comment = c(ORCID = "0000-0002-8458-8467"))
 Maintainer: Karlo Guidoni Martins <kguidonimartins@gmail.com>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: Virtual biotic pollination flow app
 License: MIT + file LICENSE
-URL: https://github.com/kguidonimartins/
-BugReports: https://github.com/kguidonimartins/
+URL:
+    https://github.com/virtual-pollination-trade/virtual-biotic-pollination-flow/
+BugReports:
+    https://github.com/virtual-pollination-trade/virtual-biotic-pollination-flow/issues
 Imports:
     dplyr,
     DT,
@@ -21,15 +22,14 @@ Imports:
     ggtext,
     here,
     knitr,
+    magrittr,
     qs,
-    renv,
     rmarkdown,
     rsconnect,
     scales,
     sf,
     shiny,
     shinydashboard,
-    shinytest,
     shinythemes,
     usethis,
     xpectr

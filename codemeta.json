@@ -5,19 +5,18 @@
   ],
   "@type": "SoftwareSourceCode",
   "identifier": "vbpflow",
-  "description": "More about what it does (maybe more than one line)\n    Use four spaces when indenting paragraphs within the Description.",
+  "description": "Virtual biotic pollination flow app",
   "name": "vbpflow: What the Package Does (Title Case)",
-  "codeRepository": "https://github.com/kguidonimartins/",
-  "issueTracker": "https://github.com/kguidonimartins/",
+  "codeRepository": "https://github.com/virtual-pollination-trade/virtual-biotic-pollination-flow/",
+  "issueTracker": "\n    https://github.com/virtual-pollination-trade/virtual-biotic-pollination-flow/issues",
   "license": "https://spdx.org/licenses/MIT",
   "version": "0.1.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "4.0.2",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.0.2 (2020-06-22)",
+  "runtimePlatform": "R version 4.0.3 (2020-10-10)",
   "author": [
     {
       "@type": "Person",
@@ -129,6 +128,18 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "magrittr",
+      "name": "magrittr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=magrittr"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "qs",
       "name": "qs",
       "provider": {
@@ -138,18 +149,6 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=qs"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "renv",
-      "name": "renv",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=renv"
     },
     {
       "@type": "SoftwareApplication",
@@ -225,18 +224,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "shinytest",
-      "name": "shinytest",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=shinytest"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "shinythemes",
       "name": "shinythemes",
       "provider": {
@@ -272,7 +259,7 @@
       "sameAs": "https://CRAN.R-project.org/package=xpectr"
     }
   ],
-  "fileSize": "14684.224KB",
+  "fileSize": "273328.78KB",
   "contIntegration": "https://travis-ci.com/kguidonimartins/virtual-biotic-pollination-flow",
   "developmentStatus": "https://www.repostatus.org/#active"
 }
