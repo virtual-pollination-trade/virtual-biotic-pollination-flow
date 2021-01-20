@@ -14,7 +14,13 @@ run:          ## run shiny app locally
 
 deploy_app:   ## deploy the last version of shiny app
 	if [ -f .Rprofile ]; then mv .Rprofile bkp_rprofile; fi
-	$(R) "rsconnect::deployApp(appDir = '.', upload = TRUE, launch.browser = TRUE, forceUpdate = TRUE, logLevel = 'verbose', lint = TRUE)"
+	$(R) "rsconnect::deployApp(appDir = '.', \
+		account = 'virtual-pollination-trade', \
+		upload = TRUE, \
+		launch.browser = TRUE, \
+		forceUpdate = TRUE, \
+		logLevel = 'verbose', \
+		lint = TRUE)"
 	if [ -f bkp_rprofile ]; then mv bkp_rprofile .Rprofile; fi
 
 show_logs:    ## show the last 200 logs of the website
