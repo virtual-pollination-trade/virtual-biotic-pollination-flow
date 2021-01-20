@@ -3,8 +3,7 @@
 #' @param data_sf the sf object read by `read_sf_data()`
 #' @param filled_by the colormap choosed in the input panel
 #'
-#' @import ggplot2
-#' @import sf
+#' @importFrom ggplot2 ggplot geom_sf ylim aes scale_fill_gradientn labs
 #'
 #' @return a sf object
 #'
@@ -16,9 +15,9 @@ plot_sf_map <- function(data_sf, filled_by) {
 
     map <-
       data_sf %>%
-      ggplot() +
-      geom_sf() +
-      ylim(c(-100, 100))
+      ggplot2::ggplot() +
+      ggplot2::geom_sf() +
+      ggplot2::ylim(c(-100, 100))
 
   }
 
@@ -28,15 +27,15 @@ plot_sf_map <- function(data_sf, filled_by) {
 
     map <-
       data_sf %>%
-      ggplot() +
-      geom_sf(aes(fill = hdi)) +
-      scale_fill_gradientn(
+      ggplot2::ggplot() +
+      ggplot2::geom_sf(ggplot2::aes(fill = hdi)) +
+      ggplot2::scale_fill_gradientn(
         colours = hdi_fill_colors,
         na.value = "white",
         guide = "colourbar"
       ) +
-      labs(fill = "HDI") +
-      ylim(c(-100, 100))
+      ggplot2::labs(fill = "HDI") +
+      ggplot2::ylim(c(-100, 100))
 
   }
 

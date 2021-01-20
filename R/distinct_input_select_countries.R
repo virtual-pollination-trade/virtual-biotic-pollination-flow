@@ -3,7 +3,7 @@
 #' @param data raw data
 #' @param countries_type reporter or partner countries
 #'
-#' @import dplyr
+#' @importFrom dplyr select distinct pull
 #'
 #' @return an ordered vector
 #'
@@ -12,9 +12,9 @@
 distinct_input_select_countries <- function(data, countries_type) {
 
   data %>%
-    select({{ countries_type }}) %>%
-    distinct() %>%
-    pull() %>%
+    dplyr::select({{ countries_type }}) %>%
+    dplyr::distinct() %>%
+    dplyr::pull() %>%
     {
       c("All countries", sort(.))
     }

@@ -4,14 +4,14 @@
 #'
 #' @return a filtered tibble
 #'
-#' @import dplyr
+#' @importFrom dplyr group_by summarise filter arrange ungroup
 #'
 #' @export
 #'
 distinct_countries <- function(data) {
 
   data %>%
-    group_by(
+    dplyr::group_by(
       reporter_countries,
       partner_countries,
       reporter_long,
@@ -22,11 +22,11 @@ distinct_countries <- function(data) {
       partner_hdi,
       year
     ) %>%
-    summarise(
+    dplyr::summarise(
       vp_flow = sum(vp_flow),
     ) %>%
-    filter(vp_flow > 0) %>%
-    arrange(vp_flow) %>%
-    ungroup()
+    dplyr::filter(vp_flow > 0) %>%
+    dplyr::arrange(vp_flow) %>%
+    dplyr::ungroup()
 
 }

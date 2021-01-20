@@ -4,7 +4,7 @@
 #' @param data filtered data
 #' @param year choosed year in the input panel
 #'
-#' @import dplyr
+#' @importFrom dplyr filter summarise group_by ungroup
 #'
 #' @return a tibble
 #'
@@ -16,8 +16,8 @@ min_max_vp_flow_by_input_year <- function(data, year) {
 
     min_max_vp_flow <-
       data %>%
-      filter(vp_flow > 0) %>%
-      summarise(
+      dplyr::filter(vp_flow > 0) %>%
+      dplyr::summarise(
         vp_flow_min = min(vp_flow),
         vp_flow_max = max(vp_flow)
       )
@@ -27,13 +27,13 @@ min_max_vp_flow_by_input_year <- function(data, year) {
     min_max_vp_flow <-
       data %>%
       distinct_countries() %>%
-      group_by(year) %>%
-      summarise(
+      dplyr::group_by(year) %>%
+      dplyr::summarise(
         vp_flow_min = min(vp_flow),
         vp_flow_max = max(vp_flow)
       ) %>%
-      filter(year %in% {{ year }}) %>%
-      ungroup()
+      dplyr::filter(year %in% {{ year }}) %>%
+      dplyr::ungroup()
 
   }
 

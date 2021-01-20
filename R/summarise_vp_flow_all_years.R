@@ -6,14 +6,14 @@
 #'
 #' @return a tibble
 #'
-#' @import dplyr
+#' @importFrom dplyr group_by summarise filter arrange ungroup
 #'
 #' @export
 #'
 summarise_vp_flow_all_years <- function(data) {
 
   data %>%
-    group_by(
+    dplyr::group_by(
       reporter_countries,
       partner_countries,
       reporter_long,
@@ -23,11 +23,11 @@ summarise_vp_flow_all_years <- function(data) {
       partner_lat,
       partner_hdi,
     ) %>%
-    summarise(
+    dplyr::summarise(
       vp_flow = sum(vp_flow),
     ) %>%
-    filter(vp_flow > 0) %>%
-    arrange(vp_flow) %>%
-    ungroup()
+    dplyr::filter(vp_flow > 0) %>%
+    dplyr::arrange(vp_flow) %>%
+    dplyr::ungroup()
 
 }

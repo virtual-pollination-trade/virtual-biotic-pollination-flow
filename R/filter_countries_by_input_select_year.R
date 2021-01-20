@@ -2,6 +2,8 @@
 #'
 #' @param data_filtered_by_countries a pre filtered tibble resulting from \code{filter_countries_by_input_select_countries()}
 #' @param input_year Input year
+#' 
+#' @importFrom dplyr filter
 #'
 #' @return a refiltered tibble
 #' @export
@@ -18,7 +20,7 @@ filter_countries_by_input_select_year <- function(data_filtered_by_countries, in
 
     data_filtered_by_year <-
       data_filtered_by_countries %>%
-      filter(year == input_year)
+      dplyr::filter(year == input_year)
 
   }
 

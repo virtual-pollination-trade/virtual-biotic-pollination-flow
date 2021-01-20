@@ -5,7 +5,7 @@
 #' @param input_destination input destination
 #' @param input_year input year
 #'
-#' @import dplyr
+#' @importFrom dplyr filter group_by summarise arrange desc ungroup mutate rename
 #'
 #' @return a filtered tibble
 #' @export
@@ -24,22 +24,22 @@ distinct_countries_for_dt <- function(data_raw, input_origin, input_destination,
 
     df_result <-
       data_raw %>%
-      filter(
+      dplyr::filter(
         reporter_countries %in% unique_origin,
         partner_countries %in% unique_destination
       ) %>%
-      group_by(
+      dplyr::group_by(
         reporter_countries,
         partner_countries
       ) %>%
-      summarise(
+      dplyr::summarise(
         vp_flow = sum(vp_flow),
       ) %>%
-      arrange(desc(vp_flow)) %>%
-      ungroup() %>%
-      filter(vp_flow > 0) %>%
-      mutate(vp_flow = round(vp_flow, 1)) %>%
-      rename(
+      dplyr::arrange(dplyr::desc(vp_flow)) %>%
+      dplyr::ungroup() %>%
+      dplyr::filter(vp_flow > 0) %>%
+      dplyr::mutate(vp_flow = round(vp_flow, 1)) %>%
+      dplyr::rename(
         "Exporting country" = reporter_countries,
         "Importing country" = partner_countries,
         "Virtual Biotic Pollination Flow (tons)" = vp_flow
@@ -49,24 +49,24 @@ distinct_countries_for_dt <- function(data_raw, input_origin, input_destination,
 
     df_result <-
       data_raw %>%
-      filter(
+      dplyr::filter(
         reporter_countries %in% unique_origin,
         partner_countries %in% unique_destination,
         year %in% input_year
       ) %>%
-      group_by(
+      dplyr::group_by(
         reporter_countries,
         partner_countries,
         year
       ) %>%
-      summarise(
+      dplyr::summarise(
         vp_flow = sum(vp_flow),
       ) %>%
-      arrange(desc(vp_flow)) %>%
-      ungroup() %>%
-      filter(vp_flow > 0) %>%
-      mutate(vp_flow = round(vp_flow, 1)) %>%
-      rename(
+      dplyr::arrange(dplyr::desc(vp_flow)) %>%
+      dplyr::ungroup() %>%
+      dplyr::filter(vp_flow > 0) %>%
+      dplyr::mutate(vp_flow = round(vp_flow, 1)) %>%
+      dplyr::rename(
         "Exporting country" = reporter_countries,
         "Importing country" = partner_countries,
         Year = year,

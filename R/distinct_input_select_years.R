@@ -2,7 +2,7 @@
 #'
 #' @param data raw data
 #'
-#' @import dplyr
+#' @importFrom dplyr select arrange distinct pull
 #'
 #' @return an ordered vector
 #'
@@ -11,10 +11,10 @@
 distinct_input_select_years <- function(data) {
 
   data %>%
-    select(year) %>%
-    arrange(year) %>%
-    distinct() %>%
-    pull() %>%
+    dplyr::select(year) %>%
+    dplyr::arrange(year) %>%
+    dplyr::distinct() %>%
+    dplyr::pull() %>%
     {
       c("All years", .)
     }

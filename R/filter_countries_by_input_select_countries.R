@@ -3,6 +3,8 @@
 #' @param data_raw Data raw
 #' @param input_origin Input reporter_countries
 #' @param input_destination Input partner_countries
+#' 
+#' @importFrom dplyr filter
 #'
 #' @return a filtered tibble
 #' @export
@@ -53,7 +55,7 @@ filter_countries_by_input_select_countries <- function(data_raw, input_origin, i
 
     data_filtered <-
       data_raw %>%
-      filter(
+      dplyr::filter(
         partner_countries %in% destination
       ) %>%
       distinct_countries()
@@ -64,7 +66,7 @@ filter_countries_by_input_select_countries <- function(data_raw, input_origin, i
 
     data_filtered <-
       data_raw %>%
-      filter(
+      dplyr::filter(
         reporter_countries %in% origin
       ) %>%
       distinct_countries()
@@ -75,7 +77,7 @@ filter_countries_by_input_select_countries <- function(data_raw, input_origin, i
 
     data_filtered <-
       data_raw %>%
-      filter(
+      dplyr::filter(
         reporter_countries %in% origin,
         partner_countries %in% destination
       ) %>%

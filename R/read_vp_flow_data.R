@@ -2,15 +2,14 @@
 #'
 #' @return a tibble
 #'
-#' @import here
-#' @import qs
-#' @import dplyr
+#' @importFrom here here
+#' @importFrom qs qread
 #'
 #' @export
 #'
 read_vp_flow_data <- function() {
 
   here::here("inst", "extdata", "virtual-pollinators-flow.qs") %>%
-    qread()
+    qs::qread()
 
 }
