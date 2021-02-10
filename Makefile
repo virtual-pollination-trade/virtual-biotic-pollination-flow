@@ -21,7 +21,7 @@ show_logs:    ## show the last 200 logs of the website
 	$(R) "rsconnect::showLogs(entries = 200)"
 
 show_online:  ## open URL of the shiny app
-	xdg-open https://kguidonimartins.shinyapps.io/virtual-biotic-pollination-flow/
+	xdg-open https://virtual-pollination-trade.shinyapps.io/virtual-biotic-pollination-flow/
 
 test_pkg:     ## test functions and shiny app
 	$(R) "devtools::test()"
