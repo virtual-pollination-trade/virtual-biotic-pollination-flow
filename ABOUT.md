@@ -16,8 +16,6 @@ challenges of biodiversity loss, ecosystem health, and social justice.
 
 ###### Check more at: F. D. S. Silva [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0001-9445-9493), L. G. Carvalheiro [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0001-7655-979X), J. Aguirre-Gutiérrez [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0001-9190-3229), M. Lucotte [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-6360-2979), K. Guidoni-Martins [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-8458-8467), F. Mertens [![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-1449-8140). *Virtual pollination trade uncovers global dependence on biodiversity of developing countries*. Published in *Science Advances*, 10 March 2021
 
-<!-- <https://doi.org/> -->
-
 ---
 
 <div style="text-align: left;">
