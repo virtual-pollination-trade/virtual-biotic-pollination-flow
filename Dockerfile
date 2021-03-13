@@ -24,9 +24,23 @@ RUN apt-get update && apt-get install -y \
 
 # install R packages required
 # (change it dependeing on the packages you need)
-RUN R -e "pkg <- c('dplyr', 'DT', 'ggplot2', 'here', 'knitr', 'qs', \
-           'rmarkdown', 'rsconnect', 'scales', 'sf', 'shiny', \
-           'shinydashboard', 'shinythemes', 'usethis'); \
+RUN R -e "pkg <- c( \
+                    'dplyr', \
+                    'DT', \
+                    'ggplot2', \
+                    'ggtext', \
+                    'here', \
+                    'knitr', \
+                    'magrittr', \
+                    'qs', \
+                    'rmarkdown', \
+                    'rsconnect', \
+                    'scales', \
+                    'sf', \
+                    'shiny', \
+                    'shinydashboard', \
+                    'shinythemes', \
+                    'usethis'); \
            install.packages(pkg, repos = \
            'http://mran.revolutionanalytics.com/snapshot/2020-05-28/')"
 
