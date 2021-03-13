@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.com/kguidonimartins/virtual-biotic-pollination-flow.svg?token=yxuzigPBpgHFpwAypqgf&branch=master)](https://travis-ci.com/kguidonimartins/virtual-biotic-pollination-flow)
 ![r-test-check](https://github.com/kguidonimartins/virtual-biotic-pollination-flow/workflows/r-test-check/badge.svg)
 ![docker-build-push](https://github.com/kguidonimartins/virtual-biotic-pollination-flow/workflows/docker-build-push/badge.svg)
-
+[![](https://img.shields.io/badge/Shiny-shinyapps.io-blue?style=flat&labelColor=white&logo=RStudio&logoColor=blue)](https://virtual-pollination-trade.shinyapps.io/virtual-biotic-pollination-flow/)
 
 This repository hosts the source code of the `virtual-biotic-pollination-flow` app, a shiny application available at this link: https://virtual-pollination-trade.shinyapps.io/virtual-biotic-pollination-flow/
 
