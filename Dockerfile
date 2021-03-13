@@ -42,7 +42,7 @@ RUN R -e "pkg <- c( \
                     'shinythemes', \
                     'usethis'); \
            install.packages(pkg, repos = \
-           'http://mran.revolutionanalytics.com/snapshot/2020-05-28/')"
+           'http://mran.revolutionanalytics.com/snapshot/2021-02-28/')"
 
 # create folder to store data
 RUN rm -rf /srv/shiny-server/*
