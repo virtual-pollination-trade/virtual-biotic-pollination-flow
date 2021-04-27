@@ -20,7 +20,8 @@ RUN apt-get update && apt-get install -y \
     libxt-dev \
     netcdf-bin \
     pandoc \
-    pandoc-citeproc
+    pandoc-citeproc \
+    && rm -rf /var/lib/apt/lists/*
 
 # install R packages required
 # (change it dependeing on the packages you need)
@@ -56,8 +57,8 @@ COPY www/google-analytics.html /srv/shiny-server/www/
 COPY ABOUT.md /srv/shiny-server/
 
 # this file needs to be executable.
-# dont forget: `sudo chmod +x shiny-server.sh`
 COPY shiny-server.sh /usr/bin/shiny-server.sh
+RUN chmod +x /usr/bin/shiny-server.sh
 
 # select port
 EXPOSE 3838
